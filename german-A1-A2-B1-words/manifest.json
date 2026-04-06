@@ -1,0 +1,22 @@
+{
+  "name": "German A1 Vocab Quiz",
+  "short_name": "A1 Quiz",
+  "description": "Listen & choose vocabulary quiz for German A1 learners. 634 words covering vocab and artikel.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0d17",
+  "theme_color": "#0b0d17",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
