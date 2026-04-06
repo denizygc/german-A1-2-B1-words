@@ -1,19 +1,20 @@
-# German A1 Vocab Quiz
+# German A1-A2-B1 Vocab Quiz
 
-A progressive web app for practicing German A1 vocabulary. Listen to words, choose the correct English meaning, and test your knowledge of German articles (der/die/das).
+A progressive web app for practicing German A1, A2, and B1 vocabulary. Listen to words, choose the correct English meaning, and test your knowledge of German articles (der/die/das).
 
 ## Features
 
-- **634 questions** — 479 vocab + 155 artikel, covering A1 level
-- **Listen & Choose** — hear the German word spoken aloud via browser TTS
-- **Speed control** — toggle between slow and normal playback
-- **Artikel mode** — choose the correct article (der/die/das) for nouns
-- **Choose question count** — pick 10, 25, 50, all, or a custom number per session
-- **Add words** — add your own vocab or artikel questions directly in the app
-- **Persistent storage** — custom words are saved in localStorage
-- **Category badges** — words are tagged by group (Verb, Noun, Numbers, etc.)
-- **Works offline** — PWA with service worker caching
-- **iPhone ready** — add to home screen for a native app experience
+- **A1, A2, and B1 levels** - Comprehensive embedded word lists covering three proficiency stages.
+- **Study tracking** - Automatically saves your progress with per-word correct, wrong, and skipped persistence.
+- **Statistics tab** - Track your learning with dedicated Success Rate and Answers sub-tabs.
+- **Listen and choose** - Hear the German word spoken aloud via browser TTS.
+- **Speed control** - Toggle between slow and normal playback.
+- **Artikel mode** - Choose the correct article (der/die/das) for nouns.
+- **Session sizing** - Pick 10, 25, 50, all, or a custom number of questions per session.
+- **Custom words** - Add your own vocabulary saved directly to local storage per level (A1/A2/B1) instead of globally.
+- **Category badges** - Words are tagged by group (Verb, Noun, Numbers, etc.).
+- **Works offline** - PWA with service worker caching.
+- **Mobile native feel** - Add to your iPhone or Android home screen for full-screen usage.
 
 ## Word Categories
 
