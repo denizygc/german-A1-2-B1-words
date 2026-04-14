@@ -283,19 +283,16 @@
             margin-bottom: 16px;
             color: var(--accent-cyan);
         }
-        .language-bar {
+        .header-meta {
             width: 100%;
             max-width: 700px;
-            margin: 0 auto 18px;
-            padding: 12px 16px;
-            background: rgba(19, 22, 39, 0.92);
-            border: 1px solid var(--border);
-            border-radius: 14px;
             display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 0 auto 14px;
         }
-        .language-copy {
+        .header-copy {
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -303,29 +300,49 @@
             flex: 1;
         }
         .language-label {
-            font-size: 0.72rem;
-            color: var(--accent-cyan);
+            font-size: 0.64rem;
+            color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        .language-compact {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 10px;
+            background: rgba(19, 22, 39, 0.92);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            flex: 0 0 auto;
+            min-width: 0;
+        }
         .language-status {
             color: var(--text-dim);
-            font-size: 0.78rem;
-            line-height: 1.35;
+            font-size: 0.72rem;
+            line-height: 1.2;
+            min-height: 0.9rem;
+            text-align: left;
         }
+        body[data-dir="rtl"] .language-status { text-align: right; }
         .language-select {
-            flex: 0 0 180px;
-            background: var(--btn-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            width: 108px;
+            background: transparent;
+            border: none;
             color: var(--text-main);
-            padding: 11px 12px;
+            padding: 0 18px 0 0;
             font-family: 'Space Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             outline: none;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            text-align: right;
+            background-image: linear-gradient(45deg, transparent 50%, var(--accent-cyan) 50%), linear-gradient(135deg, var(--accent-cyan) 50%, transparent 50%);
+            background-position: calc(100% - 10px) 45%, calc(100% - 5px) 45%;
+            background-size: 5px 5px, 5px 5px;
+            background-repeat: no-repeat;
         }
-        .language-select:focus { border-color: var(--accent-cyan); }
+        .language-select:focus { color: var(--accent-cyan); }
         .num-options {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -727,14 +744,22 @@
 
             .setup-screen { padding: 0; }
             .setup-section { padding: 18px; }
-            .language-bar {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 12px;
-                margin: 0 8px 16px;
-                width: calc(100% - 16px);
+            .header-meta {
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 12px;
             }
-            .language-select { flex-basis: auto; width: 100%; }
+            .language-compact {
+                padding: 6px 9px;
+            }
+            .language-select {
+                width: 92px;
+                font-size: 0.78rem;
+            }
+            .language-status {
+                font-size: 0.68rem;
+                max-width: 88px;
+            }
             .num-options { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .custom-num-row { flex-direction: column; }
             .custom-num-row input { width: 100%; }
@@ -750,6 +775,15 @@
 
         @media (max-width: 380px) {
             .header { padding: 18px 12px 0; }
+            .header-meta {
+                gap: 8px;
+            }
+            .language-compact {
+                padding: 5px 8px;
+            }
+            .language-select {
+                width: 84px;
+            }
             .card { padding: 18px 14px; }
             .bottom-bar { width: 100%; padding: 0 8px; }
             .bottom-btn { padding: 12px 8px; font-size: 0.85rem; }
@@ -924,22 +958,24 @@
 
     <div class="header">
         <h1 id="app-title">German Vocab Quiz</h1>
-        <div class="subtitle" id="subtitle-info">634 words · 479 vocab + 155 artikel · Listen & Choose</div>
-        <div class="language-bar">
-            <div class="language-copy">
-                <span class="language-label" id="language-label">Test language</span>
-                <span class="language-status" id="language-status">Interface uses English. Progress history stays the same.</span>
+        <div class="header-meta">
+            <div class="header-copy">
+                <div class="subtitle" id="subtitle-info">634 words · 479 vocab + 155 artikel · Listen & Choose</div>
+                <span class="language-status" id="language-status">English ready</span>
             </div>
-            <select id="language-select" class="language-select" onchange="changeLanguage(this.value)">
-                <option value="en">English</option>
-                <option value="tr">Türkçe</option>
-                <option value="it">Italiano</option>
-                <option value="fr">Français</option>
-                <option value="ar">العربية</option>
-                <option value="fa">فارسی</option>
-                <option value="zh">中文</option>
-                <option value="ja">日本語</option>
-            </select>
+            <div class="language-compact">
+                <span class="language-label" id="language-label">UI</span>
+                <select id="language-select" class="language-select" onchange="changeLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="it">Italiano</option>
+                    <option value="fr">Français</option>
+                    <option value="ar">العربية</option>
+                    <option value="fa">فارسی</option>
+                    <option value="zh">中文</option>
+                    <option value="ja">日本語</option>
+                </select>
+            </div>
         </div>
         <div class="stats" id="stats-bar" style="display:none;">
             <span class="corr">● <span id="count-correct">0</span> <span id="stats-correct-label">correct</span></span>
@@ -1625,7 +1661,11 @@
         let translatorInstances = {};
         let translatorPromises = {};
         let translatorAvailability = {};
+        let translationJobs = {};
+        let translationRescanNeeded = {};
         let glossTranslationPromises = {};
+        let glossCatalogCache = [];
+        let glossCatalogDirty = true;
         let selectedCount = 0;
         let questions = [];
         let currentIdx = 0;
@@ -1686,6 +1726,38 @@
 
         function persistTranslationCache() {
             localStorage.setItem(TRANSLATION_CACHE_KEY, JSON.stringify(translationCache));
+        }
+
+        function markGlossCatalogDirty() {
+            glossCatalogDirty = true;
+        }
+
+        function getGlossCatalog() {
+            if (!glossCatalogDirty && glossCatalogCache.length) return glossCatalogCache;
+
+            const catalog = new Set();
+            Object.keys(levelData).forEach(level => {
+                [...levelData[level], ...(userWordsByLevel[level] || [])].forEach(word => {
+                    const meaning = word.type === 'artikel' ? word.eng : word.ans;
+                    if (meaning) catalog.add(meaning);
+                });
+            });
+
+            glossCatalogCache = [...catalog];
+            glossCatalogDirty = false;
+            return glossCatalogCache;
+        }
+
+        function getLanguageCoverage(language) {
+            const total = getGlossCatalog().length;
+            if (language === 'en') return { done: total, total };
+
+            const cache = translationCache[language] || {};
+            let done = 0;
+            getGlossCatalog().forEach(gloss => {
+                if (cache[gloss]) done += 1;
+            });
+            return { done, total };
         }
 
         function setCurrentDirection() {
@@ -1836,7 +1908,7 @@
 
         function renderStaticLabels() {
             document.getElementById('app-title').textContent = t('title');
-            document.getElementById('language-label').textContent = t('languageLabel');
+            document.getElementById('language-label').textContent = 'UI';
             document.getElementById('stats-tab-btn').textContent = t('statsTab');
             document.getElementById('statistics-title').textContent = t('statistics');
             document.getElementById('stats-tab-rate-btn').textContent = t('successRate');
@@ -1882,23 +1954,22 @@
 
         function updateLanguageStatus() {
             const statusEl = document.getElementById('language-status');
+            const coverage = getLanguageCoverage(currentLanguage);
             if (currentLanguage === 'en') {
-                statusEl.textContent = t('languageHintEnglish');
+                statusEl.textContent = 'English';
                 return;
             }
 
             const status = translatorAvailability[currentLanguage];
             const languageName = getLanguageName(currentLanguage);
-            if (status === 'available') {
-                statusEl.textContent = t('languageHintReady', { language: languageName });
-            } else if (status === 'downloadable' || status === 'downloading' || status === 'creating') {
-                statusEl.textContent = t('languageHintLoading', { language: languageName });
-            } else if ((translationCache[currentLanguage] && Object.keys(translationCache[currentLanguage]).length) > 0) {
-                statusEl.textContent = t('languageHintReady', { language: languageName });
+            if (coverage.done >= coverage.total && coverage.total > 0) {
+                statusEl.textContent = `${languageName} ready`;
+            } else if (status === 'available' || status === 'syncing' || status === 'downloadable' || status === 'downloading' || status === 'creating') {
+                statusEl.textContent = `${languageName} ${coverage.done}/${coverage.total}`;
             } else if ('Translator' in self && window.isSecureContext) {
-                statusEl.textContent = t('languageHintLoading', { language: languageName });
+                statusEl.textContent = `${languageName} ${coverage.done}/${coverage.total}`;
             } else {
-                statusEl.textContent = t('languageHintFallback', { language: languageName });
+                statusEl.textContent = `${languageName} fallback`;
             }
         }
 
@@ -1963,20 +2034,26 @@
 
         async function getGloss(text, type = 'vocab') {
             if (!text || currentLanguage === 'en' || type === 'artikel') return text;
-            if (!translationCache[currentLanguage]) translationCache[currentLanguage] = {};
-            if (translationCache[currentLanguage][text]) return translationCache[currentLanguage][text];
+            return translateGlossForLanguage(currentLanguage, text);
+        }
 
-            const promiseKey = currentLanguage + '::' + text;
+        async function translateGlossForLanguage(language, text) {
+            if (!text || language === 'en') return text;
+            if (!translationCache[language]) translationCache[language] = {};
+            if (translationCache[language][text]) return translationCache[language][text];
+
+            const promiseKey = language + '::' + text;
             if (glossTranslationPromises[promiseKey]) return glossTranslationPromises[promiseKey];
 
             glossTranslationPromises[promiseKey] = (async () => {
-                const translator = await getTranslator(currentLanguage);
+                const translator = await getTranslator(language);
                 if (!translator) return text;
                 try {
                     const translated = await translator.translate(text);
                     if (translated) {
-                        translationCache[currentLanguage][text] = translated;
+                        translationCache[language][text] = translated;
                         persistTranslationCache();
+                        if (language === currentLanguage) updateLanguageStatus();
                         return translated;
                     }
                 } catch (error) {
@@ -1988,6 +2065,65 @@
             })();
 
             return glossTranslationPromises[promiseKey];
+        }
+
+        async function ensureLanguageTranslations(language) {
+            if (language === 'en') return;
+            if (translationJobs[language]) return translationJobs[language];
+
+            translationJobs[language] = (async () => {
+                const translator = await getTranslator(language);
+                if (!translator) return;
+
+                const missing = getGlossCatalog().filter(gloss => !(translationCache[language] || {})[gloss]);
+                if (!missing.length) {
+                    translatorAvailability[language] = 'available';
+                    if (language === currentLanguage) updateLanguageStatus();
+                    return;
+                }
+
+                translatorAvailability[language] = 'syncing';
+                if (language === currentLanguage) updateLanguageStatus();
+
+                for (let i = 0; i < missing.length; i += 1) {
+                    await translateGlossForLanguage(language, missing[i]);
+
+                    if (language === currentLanguage && ((i + 1) % 15 === 0 || i === missing.length - 1)) {
+                        updateLanguageStatus();
+                        refreshQuizLanguage();
+                        if (document.getElementById('pool-modal').classList.contains('open')) {
+                            renderPoolList(document.getElementById('pool-search').value);
+                        }
+                    }
+                }
+
+                translatorAvailability[language] = 'available';
+                if (language === currentLanguage) {
+                    updateLanguageStatus();
+                    refreshQuizLanguage();
+                    renderAddedList();
+                    if (document.getElementById('pool-modal').classList.contains('open')) {
+                        renderPoolList(document.getElementById('pool-search').value);
+                    }
+                }
+            })().finally(() => {
+                delete translationJobs[language];
+                if (translationRescanNeeded[language]) {
+                    delete translationRescanNeeded[language];
+                    ensureLanguageTranslations(language);
+                }
+            });
+
+            return translationJobs[language];
+        }
+
+        function requestLanguageTranslationSync(language) {
+            if (language === 'en') return;
+            if (translationJobs[language]) {
+                translationRescanNeeded[language] = true;
+                return translationJobs[language];
+            }
+            return ensureLanguageTranslations(language);
         }
 
         function hydrateQuestionTranslations(question, token, optionButtons) {
@@ -2323,6 +2459,7 @@
             document.getElementById('stats-bar').style.display = 'block';
 
             if (currentLanguage !== 'en') getTranslator(currentLanguage);
+            if (currentLanguage !== 'en') requestLanguageTranslationSync(currentLanguage);
             renderQuestion();
         }
 
@@ -2465,6 +2602,7 @@
             }
 
             localStorage.setItem('germanQuizUserWordsByLevel', JSON.stringify(userWordsByLevel));
+            markGlossCatalogDirty();
 
             if (isNoun) {
                 document.getElementById('add-noun').value = '';
@@ -2481,11 +2619,13 @@
             showToast(isNoun
                 ? t('addedToLevelNoun', { level: levelLabel, text: textLabel })
                 : t('addedToLevel', { level: levelLabel, text: textLabel }));
+            if (currentLanguage !== 'en') requestLanguageTranslationSync(currentLanguage);
         }
 
         function removeWord(index) {
             getUserWords().splice(index, 1);
             localStorage.setItem('germanQuizUserWordsByLevel', JSON.stringify(userWordsByLevel));
+            markGlossCatalogDirty();
             renderAddedList();
             updatePoolCount();
         }
@@ -2547,7 +2687,10 @@
                 renderPoolList(document.getElementById('pool-search').value);
             }
             refreshQuizLanguage();
-            if (options.primeTranslator && currentLanguage !== 'en') getTranslator(currentLanguage);
+            if (options.primeTranslator && currentLanguage !== 'en') {
+                getTranslator(currentLanguage);
+                requestLanguageTranslationSync(currentLanguage);
+            }
         }
 
         function changeLanguage(language) {
@@ -2565,6 +2708,10 @@
         renderProgress();
         renderAddedList();
         updateLanguageStatus();
+        if (currentLanguage !== 'en') {
+            getTranslator(currentLanguage);
+            requestLanguageTranslationSync(currentLanguage);
+        }
     </script>
 
     <script>
