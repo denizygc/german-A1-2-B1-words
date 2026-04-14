@@ -1,3 +1,5 @@
 .DS_Store
 *.apkg
 __pycache__/
+.venv/
+translation-build-cache.json

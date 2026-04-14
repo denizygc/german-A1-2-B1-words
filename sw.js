@@ -1,7 +1,8 @@
-const CACHE_NAME = 'german-vocab-quiz-v2';
+const CACHE_NAME = 'german-vocab-quiz-v3';
 const ASSETS = [
   './',
   './index.html',
+  './gloss-translations.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',

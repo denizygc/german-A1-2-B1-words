@@ -67,17 +67,23 @@
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 0.92;
+            overflow-wrap: anywhere;
         }
         .subtitle {
             color: var(--text-dim);
             font-size: 0.82rem;
             margin-bottom: 16px;
             letter-spacing: 0.5px;
+            overflow-wrap: anywhere;
         }
         .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 18px;
             font-weight: bold;
             font-size: 0.9rem;
-            word-spacing: 15px;
             margin-bottom: 20px;
         }
         .stats .corr { color: var(--accent-cyan); }
@@ -115,6 +121,11 @@
             transition: 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
+            min-width: 0;
         }
         .bottom-btn:first-child { border-right: 1px solid var(--border); }
         .bottom-btn:hover { background: var(--btn-hover); color: var(--text-main); }
@@ -148,6 +159,8 @@
             border-radius: 20px;
             font-size: 0.72rem;
             text-transform: uppercase;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         .audio-section {
@@ -231,6 +244,10 @@
             font-size: 1rem;
             cursor: pointer;
             transition: 0.2s;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.2;
         }
         .opt-btn:hover { background: var(--btn-hover); border-color: #3f4563; }
         .opt-btn.correct { background: var(--accent-cyan) !important; color: #000 !important; border-color: var(--accent-cyan) !important; }
@@ -254,6 +271,10 @@
             transition: 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
         }
         .action-btn:hover { border-color: var(--text-dim); color: var(--text-main); }
 
@@ -289,6 +310,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 12px;
             margin: 0 auto 14px;
         }
@@ -315,6 +337,8 @@
             border-radius: 999px;
             flex: 0 0 auto;
             min-width: 0;
+            max-width: 100%;
+            margin-inline-start: auto;
         }
         .language-status {
             color: var(--text-dim);
@@ -325,7 +349,7 @@
         }
         body[data-dir="rtl"] .language-status { text-align: right; }
         .language-select {
-            width: 108px;
+            width: clamp(88px, 24vw, 108px);
             background: transparent;
             border: none;
             color: var(--text-main);
@@ -337,6 +361,7 @@
             appearance: none;
             -webkit-appearance: none;
             text-align: right;
+            min-width: 0;
             background-image: linear-gradient(45deg, transparent 50%, var(--accent-cyan) 50%), linear-gradient(135deg, var(--accent-cyan) 50%, transparent 50%);
             background-position: calc(100% - 10px) 45%, calc(100% - 5px) 45%;
             background-size: 5px 5px, 5px 5px;
@@ -360,9 +385,18 @@
             cursor: pointer;
             transition: 0.2s;
             text-align: center;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.1;
+            min-width: 0;
         }
         .num-btn:hover { border-color: var(--accent-purple); }
         .num-btn.selected { border-color: var(--accent-cyan); background: rgba(0,229,192,0.1); color: var(--accent-cyan); }
+        .num-btn .num-value {
+            display: block;
+            line-height: 1;
+        }
         .num-btn .num-label {
             display: block;
             font-size: 0.65rem;
@@ -407,6 +441,10 @@
             letter-spacing: 2px;
             transition: 0.2s;
             box-shadow: 0 4px 20px rgba(0, 229, 192, 0.2);
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.05;
         }
         .start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0, 229, 192, 0.3); }
         .start-btn:active { transform: scale(0.98); }
@@ -446,11 +484,13 @@
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            overflow-wrap: anywhere;
         }
         .modal-sub {
             color: var(--text-dim);
             font-size: 0.78rem;
             margin-bottom: 20px;
+            overflow-wrap: anywhere;
         }
 
         .word-form {
@@ -532,6 +572,10 @@
             transition: 0.2s;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
         }
         .add-word-btn:hover { opacity: 0.9; }
         .add-word-btn:active { transform: scale(0.98); }
@@ -549,22 +593,31 @@
             margin-bottom: 8px;
         }
         .added-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: start;
             padding: 8px 10px;
             background: var(--btn-bg);
             border-radius: 8px;
             margin-bottom: 6px;
             font-size: 0.82rem;
+            gap: 8px 12px;
         }
         .added-item .word-info {
             display: flex;
-            gap: 8px;
+            gap: 6px 8px;
             align-items: center;
+            flex-wrap: wrap;
+            min-width: 0;
         }
         .added-item .de { color: var(--accent-cyan); font-weight: 700; }
         .added-item .en { color: var(--text-dim); }
+        .added-item .de,
+        .added-item .en,
+        .added-item .tag {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
         .added-item .tag {
             font-size: 0.65rem;
             color: var(--accent-purple);
@@ -580,6 +633,7 @@
             font-size: 1.1rem;
             padding: 4px;
             line-height: 1;
+            justify-self: end;
         }
 
         .modal-actions {
@@ -599,6 +653,10 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: 0.2s;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
         }
         .modal-close-btn:hover { border-color: var(--text-dim); color: var(--text-main); }
 
@@ -656,7 +714,10 @@
             border: 1px solid var(--accent-purple);
             padding: 4px 10px;
             border-radius: 999px;
-            white-space: nowrap;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
         }
 
         .pool-empty {
@@ -728,6 +789,8 @@
                 padding: 12px 10px;
                 min-width: 0;
                 white-space: normal;
+                font-size: 0.86rem;
+                letter-spacing: 0.5px;
             }
             .bottom-btn:first-child { border-right: none; border-bottom: 1px solid var(--border); }
 
@@ -745,12 +808,14 @@
             .setup-screen { padding: 0; }
             .setup-section { padding: 18px; }
             .header-meta {
-                align-items: flex-start;
+                flex-direction: column;
+                align-items: stretch;
                 gap: 10px;
                 margin-bottom: 12px;
             }
             .language-compact {
                 padding: 6px 9px;
+                align-self: flex-end;
             }
             .language-select {
                 width: 92px;
@@ -764,13 +829,41 @@
             .custom-num-row { flex-direction: column; }
             .custom-num-row input { width: 100%; }
             .start-btn { padding: 16px; }
+            .stats-tab { font-size: 0.8rem; }
 
             .modal-overlay { padding: 18px 12px; align-items: center; }
             .modal { width: min(100%, 560px); margin: 0; padding: 22px 16px; }
             .form-row { grid-template-columns: 1fr; }
             .modal-actions { flex-direction: column; }
             .modal-close-btn { width: 100%; }
-            .added-item { flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+            .level-tabs {
+                margin: 0 8px 16px;
+                width: calc(100% - 16px);
+            }
+            .level-tab,
+            .stats-tab {
+                min-height: 54px;
+            }
+            .progress-level-header {
+                flex-wrap: wrap;
+                gap: 6px 12px;
+            }
+            .progress-stats {
+                flex-wrap: wrap;
+                gap: 6px 12px;
+            }
+            .pool-item {
+                flex-direction: column;
+            }
+            .pool-item-tag {
+                align-self: flex-start;
+            }
+            .added-item {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .remove-btn {
+                justify-self: end;
+            }
         }
 
         @media (max-width: 380px) {
@@ -787,6 +880,43 @@
             .card { padding: 18px 14px; }
             .bottom-bar { width: 100%; padding: 0 8px; }
             .bottom-btn { padding: 12px 8px; font-size: 0.85rem; }
+            .level-tabs {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .level-tab:not(:last-child) {
+                border-right: none;
+            }
+            .level-tab:nth-child(odd) {
+                border-right: 1px solid var(--border);
+            }
+            .level-tab:nth-child(-n + 2) {
+                border-bottom: 1px solid var(--border);
+            }
+            .level-tab {
+                font-size: 0.8rem;
+                letter-spacing: 0.3px;
+                min-height: 50px;
+            }
+            .stats-tabs {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            .stats-tab:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .stats-tab {
+                font-size: 0.76rem;
+                min-height: 48px;
+            }
+            .answer-row {
+                flex-direction: column;
+            }
+            .progress-level-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
             .num-options { grid-template-columns: 1fr; }
             .start-btn { font-size: 1rem; padding: 14px; }
         }
@@ -816,6 +946,11 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             position: relative;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.1;
+            min-width: 0;
         }
         .level-tab:not(:last-child) { border-right: 1px solid var(--border); }
         .level-tab:hover { background: var(--btn-hover); color: var(--text-main); }
@@ -828,7 +963,7 @@
 
         @media (max-width: 520px) {
             .level-tabs { margin: 0 8px 16px; }
-            .level-tab { padding: 12px 8px; font-size: 0.9rem; }
+            .level-tab { padding: 12px 8px; font-size: 0.84rem; letter-spacing: 0.4px; }
         }
 
         /* ===== PROGRESS SECTION ===== */
@@ -859,6 +994,10 @@
             transition: 0.2s;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            line-height: 1.15;
         }
         .stats-tab:not(:last-child) { border-right: 1px solid var(--border); }
         .stats-tab:hover { background: var(--btn-hover); color: var(--text-main); }
@@ -878,11 +1017,13 @@
             font-size: 0.9rem;
             color: var(--text-main);
             margin-bottom: 10px;
+            overflow-wrap: anywhere;
         }
         .answer-row {
             display: flex;
             gap: 10px;
             margin-top: 8px;
+            flex-wrap: wrap;
         }
         .answer-box {
             flex: 1;
@@ -890,6 +1031,7 @@
             border-radius: 10px;
             padding: 12px;
             text-align: center;
+            min-width: 0;
         }
         .answer-box-value {
             font-family: 'Syne', sans-serif;
@@ -903,6 +1045,8 @@
             color: var(--text-dim);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         .answer-box.correct-box .answer-box-value { color: var(--accent-cyan); }
         .answer-box.wrong-box .answer-box-value { color: var(--wrong-red); }
@@ -918,16 +1062,19 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 6px;
+            gap: 8px 12px;
         }
         .progress-level-label {
             font-family: 'Syne', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
             color: var(--text-main);
+            overflow-wrap: anywhere;
         }
         .progress-level-count {
             font-size: 0.78rem;
             color: var(--text-dim);
+            overflow-wrap: anywhere;
         }
         .progress-bar-track {
             width: 100%;
@@ -948,9 +1095,53 @@
             color: var(--text-dim);
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
         }
         .progress-stats .stat-correct { color: var(--accent-cyan); }
         .progress-stats .stat-wrong { color: var(--wrong-red); }
+
+        body[data-dir="rtl"] .header-copy,
+        body[data-dir="rtl"] .setup-section,
+        body[data-dir="rtl"] .modal,
+        body[data-dir="rtl"] .card-header,
+        body[data-dir="rtl"] .progress-level-header,
+        body[data-dir="rtl"] .progress-stats,
+        body[data-dir="rtl"] .pool-item-left,
+        body[data-dir="rtl"] .word-info,
+        body[data-dir="rtl"] .text-sub {
+            text-align: right;
+        }
+
+        body[data-dir="rtl"] .language-compact {
+            margin-inline-start: 0;
+            margin-inline-end: auto;
+        }
+
+        body[data-dir="rtl"] .language-select {
+            text-align: left;
+            padding: 0 0 0 18px;
+            background-position: 10px 45%, 15px 45%;
+        }
+
+        body[data-dir="rtl"] .pool-item-tag {
+            align-self: flex-end;
+        }
+
+        body[data-dir="rtl"] .remove-btn {
+            justify-self: start;
+        }
+
+        @media (max-width: 520px) {
+            body[data-dir="rtl"] .language-compact {
+                align-self: flex-start;
+            }
+        }
+
+        @media (max-width: 380px) {
+            body[data-dir="rtl"] .progress-level-header {
+                align-items: flex-end;
+            }
+        }
 
     </style>
 </head>
@@ -961,7 +1152,7 @@
         <div class="header-meta">
             <div class="header-copy">
                 <div class="subtitle" id="subtitle-info">634 words · 479 vocab + 155 artikel · Listen & Choose</div>
-                <span class="language-status" id="language-status">English ready</span>
+                <span class="language-status" id="language-status">English</span>
             </div>
             <div class="language-compact">
                 <span class="language-label" id="language-label">UI</span>
@@ -1144,6 +1335,7 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="gloss-translations.js"></script>
     <script>
         // ===== WORD DATA BY LEVEL =====
         const a1Questions = [{"type":"vocab","q":"der Januar","ans":"January","options":[],"grp":"Noun"},{"type":"artikel","q":"Januar","ans":"der","eng":"January","options":["der","die","das"],"grp":"Noun","full":"der Januar"},{"type":"vocab","q":"der Februar","ans":"February","options":[],"grp":"Noun"},{"type":"artikel","q":"Februar","ans":"der","eng":"February","options":["der","die","das"],"grp":"Noun","full":"der Februar"},{"type":"vocab","q":"der März","ans":"March","options":[],"grp":"Noun"},{"type":"artikel","q":"März","ans":"der","eng":"March","options":["der","die","das"],"grp":"Noun","full":"der März"},{"type":"vocab","q":"der April","ans":"April","options":[],"grp":"Noun"},{"type":"artikel","q":"April","ans":"der","eng":"April","options":["der","die","das"],"grp":"Noun","full":"der April"},{"type":"vocab","q":"der Mai","ans":"May","options":[],"grp":"Noun"},{"type":"artikel","q":"Mai","ans":"der","eng":"May","options":["der","die","das"],"grp":"Noun","full":"der Mai"},{"type":"vocab","q":"der Juni","ans":"June","options":[],"grp":"Noun"},{"type":"artikel","q":"Juni","ans":"der","eng":"June","options":["der","die","das"],"grp":"Noun","full":"der Juni"},{"type":"vocab","q":"der Juli","ans":"July","options":[],"grp":"Noun"},{"type":"artikel","q":"Juli","ans":"der","eng":"July","options":["der","die","das"],"grp":"Noun","full":"der Juli"},{"type":"vocab","q":"der August","ans":"August","options":[],"grp":"Noun"},{"type":"artikel","q":"August","ans":"der","eng":"August","options":["der","die","das"],"grp":"Noun","full":"der August"},{"type":"vocab","q":"der September","ans":"September","options":[],"grp":"Noun"},{"type":"artikel","q":"September","ans":"der","eng":"September","options":["der","die","das"],"grp":"Noun","full":"der September"},{"type":"vocab","q":"der Oktober","ans":"October","options":[],"grp":"Noun"},{"type":"artikel","q":"Oktober","ans":"der","eng":"October","options":["der","die","das"],"grp":"Noun","full":"der Oktober"},{"type":"vocab","q":"der November","ans":"November","options":[],"grp":"Noun"},{"type":"artikel","q":"November","ans":"der","eng":"November","options":["der","die","das"],"grp":"Noun","full":"der November"},{"type":"vocab","q":"der Dezember","ans":"December","options":[],"grp":"Noun"},{"type":"artikel","q":"Dezember","ans":"der","eng":"December","options":["der","die","das"],"grp":"Noun","full":"der Dezember"},{"type":"vocab","q":"eins","ans":"one","options":[],"grp":"Noun"},{"type":"vocab","q":"zwei","ans":"two","options":[],"grp":"Noun"},{"type":"vocab","q":"drei","ans":"three","options":[],"grp":"Noun"},{"type":"vocab","q":"vier","ans":"four","options":[],"grp":"Noun"},{"type":"vocab","q":"fünf","ans":"five","options":[],"grp":"Noun"},{"type":"vocab","q":"sechs","ans":"six","options":[],"grp":"Noun"},{"type":"vocab","q":"sieben","ans":"seven","options":[],"grp":"Noun"},{"type":"vocab","q":"acht","ans":"eight","options":[],"grp":"Noun"},{"type":"vocab","q":"neun","ans":"nine","options":[],"grp":"Noun"},{"type":"vocab","q":"zehn","ans":"ten","options":[],"grp":"Noun"},{"type":"vocab","q":"elf","ans":"eleven","options":[],"grp":"Noun"},{"type":"vocab","q":"zwölf","ans":"twelve","options":[],"grp":"Noun"},{"type":"vocab","q":"dreizehn","ans":"thirteen","options":[],"grp":"Noun"},{"type":"vocab","q":"vierzehn","ans":"fourteen","options":[],"grp":"Noun"},{"type":"vocab","q":"fünfzehn","ans":"fifteen","options":[],"grp":"Noun"},{"type":"vocab","q":"sechzehn","ans":"sixteen","options":[],"grp":"Noun"},{"type":"vocab","q":"siebzehn","ans":"seventeen","options":[],"grp":"Noun"},{"type":"vocab","q":"achtzehn","ans":"eighteen","options":[],"grp":"Noun"},{"type":"vocab","q":"neunzehn","ans":"nineteen","options":[],"grp":"Noun"},{"type":"vocab","q":"zwanzig","ans":"twenty","options":[],"grp":"Noun"},{"type":"vocab","q":"dreißig","ans":"thirty","options":[],"grp":"Noun"},{"type":"vocab","q":"vierzig","ans":"forty","options":[],"grp":"Noun"},{"type":"vocab","q":"fünfzig","ans":"fifty","options":[],"grp":"Noun"},{"type":"vocab","q":"sechzig","ans":"sixty","options":[],"grp":"Noun"},{"type":"vocab","q":"siebzig","ans":"seventy","options":[],"grp":"Noun"},{"type":"vocab","q":"achtzig","ans":"eighty","options":[],"grp":"Noun"},{"type":"vocab","q":"neunzig","ans":"ninety","options":[],"grp":"Noun"},{"type":"vocab","q":"hundert","ans":"hundred","options":[],"grp":"Noun"},{"type":"vocab","q":"tausend","ans":"thousand","options":[],"grp":"Noun"},{"type":"vocab","q":"eine Million","ans":"one million","options":[],"grp":"Noun"},{"type":"vocab","q":"die Farbe","ans":"color","options":[],"grp":"Noun"},{"type":"artikel","q":"Farbe","ans":"die","eng":"color","options":["der","die","das"],"grp":"Noun","full":"die Farbe"},{"type":"vocab","q":"die Jacke","ans":"jacket","options":[],"grp":"Noun"},{"type":"artikel","q":"Jacke","ans":"die","eng":"jacket","options":["der","die","das"],"grp":"Noun","full":"die Jacke"},{"type":"vocab","q":"die Kleidung","ans":"clothing","options":[],"grp":"Noun"},{"type":"artikel","q":"Kleidung","ans":"die","eng":"clothing","options":["der","die","das"],"grp":"Noun","full":"die Kleidung"},{"type":"vocab","q":"der Schuh","ans":"shoe","options":[],"grp":"Noun"},{"type":"artikel","q":"Schuh","ans":"der","eng":"shoe","options":["der","die","das"],"grp":"Noun","full":"der Schuh"},{"type":"vocab","q":"was","ans":"what","options":[],"grp":"Pronoun"},{"type":"vocab","q":"was für ein","ans":"what kind of","options":[],"grp":"Pronoun"},{"type":"vocab","q":"schwarz","ans":"black","options":[],"grp":"Adjective"},{"type":"vocab","q":"weiß","ans":"white","options":[],"grp":"Adjective"},{"type":"vocab","q":"grau","ans":"grey","options":[],"grp":"Adjective"},{"type":"vocab","q":"rot","ans":"red","options":[],"grp":"Adjective"},{"type":"vocab","q":"blau","ans":"blue","options":[],"grp":"Adjective"},{"type":"vocab","q":"gelb","ans":"yellow","options":[],"grp":"Adjective"},{"type":"vocab","q":"grün","ans":"green","options":[],"grp":"Adjective"},{"type":"vocab","q":"braun","ans":"brown","options":[],"grp":"Adjective"},{"type":"vocab","q":"also","ans":"so/well","options":[],"grp":"Adverb"},{"type":"vocab","q":"auch","ans":"also/too","options":[],"grp":"Adverb"},{"type":"vocab","q":"bald","ans":"soon","options":[],"grp":"Adverb"},{"type":"vocab","q":"circa/ca.","ans":"approximately","options":[],"grp":"Adverb"},{"type":"vocab","q":"da","ans":"there/here","options":[],"grp":"Adverb"},{"type":"vocab","q":"dann","ans":"then","options":[],"grp":"Adverb"},{"type":"vocab","q":"draußen","ans":"outside","options":[],"grp":"Adverb"},{"type":"vocab","q":"gerade","ans":"just (now)","options":[],"grp":"Adverb"},{"type":"vocab","q":"gerne","ans":"with pleasure","options":[],"grp":"Adverb"},{"type":"vocab","q":"gleich","ans":"very soon / in a moment / almost immediately","options":[],"grp":"Adverb"},{"type":"vocab","q":"hier","ans":"here","options":[],"grp":"Adverb"},{"type":"vocab","q":"lieber","ans":"preferably","options":[],"grp":"Adverb"},{"type":"vocab","q":"links","ans":"left","options":[],"grp":"Adverb"},{"type":"vocab","q":"nie","ans":"never","options":[],"grp":"Adverb"},{"type":"vocab","q":"nur","ans":"only","options":[],"grp":"Adverb"},{"type":"vocab","q":"oben","ans":"above/upstairs","options":[],"grp":"Adverb"},{"type":"vocab","q":"oft","ans":"often","options":[],"grp":"Adverb"},{"type":"vocab","q":"rechts","ans":"right","options":[],"grp":"Adverb"},{"type":"vocab","q":"schon","ans":"already","options":[],"grp":"Adverb"},{"type":"vocab","q":"sehr","ans":"very","options":[],"grp":"Adverb"},{"type":"vocab","q":"so","ans":"so/like this","options":[],"grp":"Adverb"},{"type":"vocab","q":"sofort","ans":"immediately","options":[],"grp":"Adverb"},{"type":"vocab","q":"unten","ans":"below/downstairs","options":[],"grp":"Adverb"},{"type":"vocab","q":"vielleicht","ans":"maybe/perhaps","options":[],"grp":"Adverb"},{"type":"vocab","q":"warum","ans":"why","options":[],"grp":"Adverb"},{"type":"vocab","q":"weiter","ans":"further/continue","options":[],"grp":"Adverb"},{"type":"vocab","q":"wo","ans":"where","options":[],"grp":"Adverb"},{"type":"vocab","q":"woher","ans":"where from","options":[],"grp":"Adverb"},{"type":"vocab","q":"wohin","ans":"where to","options":[],"grp":"Adverb"},{"type":"vocab","q":"anrufen","ans":"to call (phone)","options":[],"grp":"Verb"},{"type":"vocab","q":"der Anruf","ans":"phone call","options":[],"grp":"Noun"},{"type":"artikel","q":"Anruf","ans":"der","eng":"phone call","options":["der","die","das"],"grp":"Noun","full":"der Anruf"},{"type":"vocab","q":"bitte","ans":"please","options":[],"grp":"Particle"},{"type":"vocab","q":"die Bitte","ans":"request","options":[],"grp":"Noun"},{"type":"artikel","q":"Bitte","ans":"die","eng":"request","options":["der","die","das"],"grp":"Noun","full":"die Bitte"},{"type":"vocab","q":"bitter","ans":"bitter","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Brief","ans":"letter","options":[],"grp":"Noun"},{"type":"artikel","q":"Brief","ans":"der","eng":"letter","options":["der","die","das"],"grp":"Noun","full":"der Brief"},{"type":"vocab","q":"die Briefmarke","ans":"stamp","options":[],"grp":"Noun"},{"type":"artikel","q":"Briefmarke","ans":"die","eng":"stamp","options":["der","die","das"],"grp":"Noun","full":"die Briefmarke"},{"type":"vocab","q":"der Dank","ans":"thanks","options":[],"grp":"Noun"},{"type":"artikel","q":"Dank","ans":"der","eng":"thanks","options":["der","die","das"],"grp":"Noun","full":"der Dank"},{"type":"vocab","q":"danke","ans":"thank you","options":[],"grp":"Interjection"},{"type":"vocab","q":"die Entschuldigung","ans":"excuse/apology","options":[],"grp":"Noun"},{"type":"artikel","q":"Entschuldigung","ans":"die","eng":"excuse/apology","options":["der","die","das"],"grp":"Noun","full":"die Entschuldigung"},{"type":"vocab","q":"der Gruß","ans":"greeting","options":[],"grp":"Noun"},{"type":"artikel","q":"Gruß","ans":"der","eng":"greeting","options":["der","die","das"],"grp":"Noun","full":"der Gruß"},{"type":"vocab","q":"hallo","ans":"hello","options":[],"grp":"Interjection"},{"type":"vocab","q":"das Handy","ans":"mobile phone","options":[],"grp":"Noun"},{"type":"artikel","q":"Handy","ans":"das","eng":"mobile phone","options":["der","die","das"],"grp":"Noun","full":"das Handy"},{"type":"vocab","q":"sagen","ans":"to say/tell","options":[],"grp":"Verb"},{"type":"vocab","q":"sprechen","ans":"to speak","options":[],"grp":"Verb"},{"type":"vocab","q":"telefonieren","ans":"to phone","options":[],"grp":"Verb"},{"type":"vocab","q":"das Telefon","ans":"telephone","options":[],"grp":"Noun"},{"type":"artikel","q":"Telefon","ans":"das","eng":"telephone","options":["der","die","das"],"grp":"Noun","full":"das Telefon"},{"type":"vocab","q":"tschüss","ans":"bye","options":[],"grp":"Interjection"},{"type":"vocab","q":"abfahren","ans":"to depart","options":[],"grp":"Verb"},{"type":"vocab","q":"abgeben","ans":"to hand in","options":[],"grp":"Verb"},{"type":"vocab","q":"abholen","ans":"to pick up","options":[],"grp":"Verb"},{"type":"vocab","q":"Achtung","ans":"attention/caution","options":[],"grp":"Noun"},{"type":"vocab","q":"anbieten","ans":"to offer","options":[],"grp":"Verb"},{"type":"vocab","q":"anfangen","ans":"to begin/start","options":[],"grp":"Verb"},{"type":"vocab","q":"anklicken","ans":"to click on","options":[],"grp":"Verb"},{"type":"vocab","q":"ankommen","ans":"to arrive","options":[],"grp":"Verb"},{"type":"vocab","q":"ankreuzen","ans":"to mark/tick","options":[],"grp":"Verb"},{"type":"vocab","q":"anmachen","ans":"to turn on","options":[],"grp":"Verb"},{"type":"vocab","q":"sich anmelden","ans":"to register","options":[],"grp":"Verb"},{"type":"vocab","q":"an sein","ans":"to be on","options":[],"grp":"Verb"},{"type":"vocab","q":"sich anziehen","ans":"to get dressed","options":[],"grp":"Verb"},{"type":"vocab","q":"arbeiten","ans":"to work","options":[],"grp":"Verb"},{"type":"vocab","q":"aufhören","ans":"to stop/end","options":[],"grp":"Verb"},{"type":"vocab","q":"auf sein","ans":"to be open","options":[],"grp":"Verb"},{"type":"vocab","q":"aufstehen","ans":"to get up","options":[],"grp":"Verb"},{"type":"vocab","q":"ausfüllen","ans":"to fill out","options":[],"grp":"Verb"},{"type":"vocab","q":"ausmachen","ans":"to turn off","options":[],"grp":"Verb"},{"type":"vocab","q":"aussehen","ans":"to look/appear","options":[],"grp":"Verb"},{"type":"vocab","q":"aus sein","ans":"to be off/over","options":[],"grp":"Verb"},{"type":"vocab","q":"aussteigen","ans":"to get off","options":[],"grp":"Verb"},{"type":"vocab","q":"sich ausziehen","ans":"to take off","options":[],"grp":"Verb"},{"type":"vocab","q":"baden","ans":"to bathe","options":[],"grp":"Verb"},{"type":"vocab","q":"bedeuten","ans":"to mean","options":[],"grp":"Verb"},{"type":"vocab","q":"beginnen","ans":"to begin","options":[],"grp":"Verb"},{"type":"vocab","q":"bekommen","ans":"to get/receive","options":[],"grp":"Verb"},{"type":"vocab","q":"benutzen","ans":"to use","options":[],"grp":"Verb"},{"type":"vocab","q":"besichtigen","ans":"to visit/sightsee","options":[],"grp":"Verb"},{"type":"vocab","q":"bestellen","ans":"to order","options":[],"grp":"Verb"},{"type":"vocab","q":"besuchen","ans":"to visit","options":[],"grp":"Verb"},{"type":"vocab","q":"bisschen","ans":"a little bit","options":[],"grp":"Verb"},{"type":"vocab","q":"der Montag","ans":"Monday","options":[],"grp":"Noun"},{"type":"artikel","q":"Montag","ans":"der","eng":"Monday","options":["der","die","das"],"grp":"Noun","full":"der Montag"},{"type":"vocab","q":"der Dienstag","ans":"Tuesday","options":[],"grp":"Noun"},{"type":"artikel","q":"Dienstag","ans":"der","eng":"Tuesday","options":["der","die","das"],"grp":"Noun","full":"der Dienstag"},{"type":"vocab","q":"der Mittwoch","ans":"Wednesday","options":[],"grp":"Noun"},{"type":"artikel","q":"Mittwoch","ans":"der","eng":"Wednesday","options":["der","die","das"],"grp":"Noun","full":"der Mittwoch"},{"type":"vocab","q":"der Donnerstag","ans":"Thursday","options":[],"grp":"Noun"},{"type":"artikel","q":"Donnerstag","ans":"der","eng":"Thursday","options":["der","die","das"],"grp":"Noun","full":"der Donnerstag"},{"type":"vocab","q":"der Freitag","ans":"Friday","options":[],"grp":"Noun"},{"type":"artikel","q":"Freitag","ans":"der","eng":"Friday","options":["der","die","das"],"grp":"Noun","full":"der Freitag"},{"type":"vocab","q":"der Samstag/Sonnabend","ans":"Saturday","options":[],"grp":"Noun"},{"type":"vocab","q":"der Sonntag","ans":"Sunday","options":[],"grp":"Noun"},{"type":"artikel","q":"Sonntag","ans":"der","eng":"Sunday","options":["der","die","das"],"grp":"Noun","full":"der Sonntag"},{"type":"vocab","q":"das Wochenende","ans":"weekend","options":[],"grp":"Noun"},{"type":"artikel","q":"Wochenende","ans":"das","eng":"weekend","options":["der","die","das"],"grp":"Noun","full":"das Wochenende"},{"type":"vocab","q":"der Automat","ans":"machine/vending machine","options":[],"grp":"Noun"},{"type":"artikel","q":"Automat","ans":"der","eng":"machine/vending machine","options":["der","die","das"],"grp":"Noun","full":"der Automat"},{"type":"vocab","q":"automatisch","ans":"automatic(ally)","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Bruder","ans":"brother","options":[],"grp":"Noun"},{"type":"artikel","q":"Bruder","ans":"der","eng":"brother","options":["der","die","das"],"grp":"Noun","full":"der Bruder"},{"type":"vocab","q":"die Ehefrau / der Ehemann","ans":"wife / husband","options":[],"grp":"Noun"},{"type":"vocab","q":"die Eltern","ans":"parents","options":[],"grp":"Noun"},{"type":"artikel","q":"Eltern","ans":"die","eng":"parents","options":["der","die","das"],"grp":"Noun","full":"die Eltern"},{"type":"vocab","q":"die Familie","ans":"family","options":[],"grp":"Noun"},{"type":"artikel","q":"Familie","ans":"die","eng":"family","options":["der","die","das"],"grp":"Noun","full":"die Familie"},{"type":"vocab","q":"der Familienname","ans":"family name/surname","options":[],"grp":"Noun"},{"type":"artikel","q":"Familienname","ans":"der","eng":"family name/surname","options":["der","die","das"],"grp":"Noun","full":"der Familienname"},{"type":"vocab","q":"die Frau","ans":"woman/wife/Mrs.","options":[],"grp":"Noun"},{"type":"artikel","q":"Frau","ans":"die","eng":"woman/wife/Mrs.","options":["der","die","das"],"grp":"Noun","full":"die Frau"},{"type":"vocab","q":"der Freund","ans":"friend/boyfriend","options":[],"grp":"Noun"},{"type":"artikel","q":"Freund","ans":"der","eng":"friend/boyfriend","options":["der","die","das"],"grp":"Noun","full":"der Freund"},{"type":"vocab","q":"die Großeltern","ans":"grandparents","options":[],"grp":"Noun"},{"type":"artikel","q":"Großeltern","ans":"die","eng":"grandparents","options":["der","die","das"],"grp":"Noun","full":"die Großeltern"},{"type":"vocab","q":"die Großmutter","ans":"grandmother","options":[],"grp":"Noun"},{"type":"artikel","q":"Großmutter","ans":"die","eng":"grandmother","options":["der","die","das"],"grp":"Noun","full":"die Großmutter"},{"type":"vocab","q":"werden","ans":"to become","options":[],"grp":"Verb"},{"type":"vocab","q":"wiederholen","ans":"to repeat","options":[],"grp":"Verb"},{"type":"vocab","q":"willkommen","ans":"welcome","options":[],"grp":"Verb"},{"type":"vocab","q":"wissen","ans":"to know (a fact)","options":[],"grp":"Verb"},{"type":"vocab","q":"wohnen","ans":"to live/reside","options":[],"grp":"Verb"},{"type":"vocab","q":"wollen","ans":"to want","options":[],"grp":"Verb"},{"type":"vocab","q":"zahlen","ans":"to pay","options":[],"grp":"Verb"},{"type":"vocab","q":"zufrieden","ans":"satisfied","options":[],"grp":"Verb"},{"type":"vocab","q":"die Leute","ans":"people","options":[],"grp":"Noun"},{"type":"artikel","q":"Leute","ans":"die","eng":"people","options":["der","die","das"],"grp":"Noun","full":"die Leute"},{"type":"vocab","q":"das Lied","ans":"song","options":[],"grp":"Noun"},{"type":"artikel","q":"Lied","ans":"das","eng":"song","options":["der","die","das"],"grp":"Noun","full":"das Lied"},{"type":"vocab","q":"man","ans":"one/you (impersonal)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"der Mann","ans":"man/husband","options":[],"grp":"Noun"},{"type":"artikel","q":"Mann","ans":"der","eng":"man/husband","options":["der","die","das"],"grp":"Noun","full":"der Mann"},{"type":"vocab","q":"der Mensch","ans":"person/human","options":[],"grp":"Noun"},{"type":"artikel","q":"Mensch","ans":"der","eng":"person/human","options":["der","die","das"],"grp":"Noun","full":"der Mensch"},{"type":"vocab","q":"die Mutter","ans":"mother","options":[],"grp":"Noun"},{"type":"artikel","q":"Mutter","ans":"die","eng":"mother","options":["der","die","das"],"grp":"Noun","full":"die Mutter"},{"type":"vocab","q":"die Oma","ans":"grandma","options":[],"grp":"Noun"},{"type":"artikel","q":"Oma","ans":"die","eng":"grandma","options":["der","die","das"],"grp":"Noun","full":"die Oma"},{"type":"vocab","q":"der Opa","ans":"grandpa","options":[],"grp":"Noun"},{"type":"artikel","q":"Opa","ans":"der","eng":"grandpa","options":["der","die","das"],"grp":"Noun","full":"der Opa"},{"type":"vocab","q":"die Schwester","ans":"sister","options":[],"grp":"Noun"},{"type":"artikel","q":"Schwester","ans":"die","eng":"sister","options":["der","die","das"],"grp":"Noun","full":"die Schwester"},{"type":"vocab","q":"der Sohn","ans":"son","options":[],"grp":"Noun"},{"type":"artikel","q":"Sohn","ans":"der","eng":"son","options":["der","die","das"],"grp":"Noun","full":"der Sohn"},{"type":"vocab","q":"die Tochter","ans":"daughter","options":[],"grp":"Noun"},{"type":"artikel","q":"Tochter","ans":"die","eng":"daughter","options":["der","die","das"],"grp":"Noun","full":"die Tochter"},{"type":"vocab","q":"die Tomate","ans":"tomato","options":[],"grp":"Noun"},{"type":"artikel","q":"Tomate","ans":"die","eng":"tomato","options":["der","die","das"],"grp":"Noun","full":"die Tomate"},{"type":"vocab","q":"der Großvater","ans":"grandfather","options":[],"grp":"Noun"},{"type":"artikel","q":"Großvater","ans":"der","eng":"grandfather","options":["der","die","das"],"grp":"Noun","full":"der Großvater"},{"type":"vocab","q":"die Hausfrau / der Hausmann","ans":"housewife / househusband","options":[],"grp":"Noun"},{"type":"vocab","q":"der Jugendliche","ans":"young person/teenager","options":[],"grp":"Noun"},{"type":"artikel","q":"Jugendliche","ans":"der","eng":"young person/teenager","options":["der","die","das"],"grp":"Noun","full":"der Jugendliche"},{"type":"vocab","q":"kennen","ans":"to know (a person/thing)","options":[],"grp":"Verb"},{"type":"vocab","q":"das Kind","ans":"child","options":[],"grp":"Noun"},{"type":"artikel","q":"Kind","ans":"das","eng":"child","options":["der","die","das"],"grp":"Noun","full":"das Kind"},{"type":"vocab","q":"der Kindergarten","ans":"kindergarten","options":[],"grp":"Noun"},{"type":"artikel","q":"Kindergarten","ans":"der","eng":"kindergarten","options":["der","die","das"],"grp":"Noun","full":"der Kindergarten"},{"type":"vocab","q":"bitten","ans":"to ask/request","options":[],"grp":"Verb"},{"type":"vocab","q":"bleiben","ans":"to stay/remain","options":[],"grp":"Verb"},{"type":"vocab","q":"brauchen","ans":"to need","options":[],"grp":"Verb"},{"type":"vocab","q":"der Vater","ans":"father","options":[],"grp":"Noun"},{"type":"artikel","q":"Vater","ans":"der","eng":"father","options":["der","die","das"],"grp":"Noun","full":"der Vater"},{"type":"vocab","q":"der Verkäufer","ans":"salesperson","options":[],"grp":"Noun"},{"type":"artikel","q":"Verkäufer","ans":"der","eng":"salesperson","options":["der","die","das"],"grp":"Noun","full":"der Verkäufer"},{"type":"vocab","q":"der/die Verwandte","ans":"relative","options":[],"grp":"Noun"},{"type":"vocab","q":"der Apfel","ans":"apple","options":[],"grp":"Noun"},{"type":"artikel","q":"Apfel","ans":"der","eng":"apple","options":["der","die","das"],"grp":"Noun","full":"der Apfel"},{"type":"vocab","q":"die Banane","ans":"banana","options":[],"grp":"Noun"},{"type":"artikel","q":"Banane","ans":"die","eng":"banana","options":["der","die","das"],"grp":"Noun","full":"die Banane"},{"type":"vocab","q":"bringen","ans":"to bring","options":[],"grp":"Verb"},{"type":"vocab","q":"buchstabieren","ans":"to spell","options":[],"grp":"Verb"},{"type":"vocab","q":"daneben","ans":"next to it","options":[],"grp":"Verb"},{"type":"vocab","q":"danken","ans":"to thank","options":[],"grp":"Verb"},{"type":"vocab","q":"dauern","ans":"to last/take (time)","options":[],"grp":"Verb"},{"type":"vocab","q":"dort/dorthin/dorther","ans":"there/to there","options":[],"grp":"Adverb"},{"type":"vocab","q":"drucken","ans":"to print","options":[],"grp":"Verb"},{"type":"vocab","q":"drücken","ans":"to press/push","options":[],"grp":"Verb"},{"type":"vocab","q":"dürfen","ans":"to be allowed to","options":[],"grp":"Verb"},{"type":"vocab","q":"sich duschen","ans":"to shower","options":[],"grp":"Verb"},{"type":"vocab","q":"einkaufen","ans":"to shop","options":[],"grp":"Verb"},{"type":"vocab","q":"einladen","ans":"to invite","options":[],"grp":"Verb"},{"type":"vocab","q":"einsteigen","ans":"to get on/board","options":[],"grp":"Verb"},{"type":"vocab","q":"empfehlen","ans":"to recommend","options":[],"grp":"Verb"},{"type":"vocab","q":"enden","ans":"to end","options":[],"grp":"Verb"},{"type":"vocab","q":"entschuldigen","ans":"to excuse","options":[],"grp":"Verb"},{"type":"vocab","q":"erklären","ans":"to explain","options":[],"grp":"Verb"},{"type":"vocab","q":"erlauben","ans":"to allow/permit","options":[],"grp":"Verb"},{"type":"vocab","q":"erzählen","ans":"to tell/narrate","options":[],"grp":"Verb"},{"type":"vocab","q":"essen","ans":"to eat","options":[],"grp":"Verb"},{"type":"vocab","q":"fahren","ans":"to drive/go","options":[],"grp":"Verb"},{"type":"vocab","q":"feiern","ans":"to celebrate","options":[],"grp":"Verb"},{"type":"vocab","q":"fehlen","ans":"to be missing/absent","options":[],"grp":"Verb"},{"type":"vocab","q":"fernsehen","ans":"to watch TV","options":[],"grp":"Verb"},{"type":"vocab","q":"das Brot","ans":"bread","options":[],"grp":"Noun"},{"type":"artikel","q":"Brot","ans":"das","eng":"bread","options":["der","die","das"],"grp":"Noun","full":"das Brot"},{"type":"vocab","q":"das Brötchen","ans":"bread roll","options":[],"grp":"Noun"},{"type":"artikel","q":"Brötchen","ans":"das","eng":"bread roll","options":["der","die","das"],"grp":"Noun","full":"das Brötchen"},{"type":"vocab","q":"das Essen","ans":"food/meal","options":[],"grp":"Noun"},{"type":"artikel","q":"Essen","ans":"das","eng":"food/meal","options":["der","die","das"],"grp":"Noun","full":"das Essen"},{"type":"vocab","q":"der Fisch","ans":"fish","options":[],"grp":"Noun"},{"type":"artikel","q":"Fisch","ans":"der","eng":"fish","options":["der","die","das"],"grp":"Noun","full":"der Fisch"},{"type":"vocab","q":"das Fleisch","ans":"meat","options":[],"grp":"Noun"},{"type":"artikel","q":"Fleisch","ans":"das","eng":"meat","options":["der","die","das"],"grp":"Noun","full":"das Fleisch"},{"type":"vocab","q":"frühstücken","ans":"to have breakfast","options":[],"grp":"Verb"},{"type":"vocab","q":"finden","ans":"to find","options":[],"grp":"Verb"},{"type":"vocab","q":"fliegen","ans":"to fly","options":[],"grp":"Verb"},{"type":"vocab","q":"abfliegen","ans":"to take off/depart","options":[],"grp":"Verb"},{"type":"vocab","q":"fragen","ans":"to ask","options":[],"grp":"Verb"},{"type":"vocab","q":"sich freuen","ans":"to be happy/look forward to","options":[],"grp":"Verb"},{"type":"vocab","q":"das Frühstück","ans":"breakfast","options":[],"grp":"Noun"},{"type":"artikel","q":"Frühstück","ans":"das","eng":"breakfast","options":["der","die","das"],"grp":"Noun","full":"das Frühstück"},{"type":"vocab","q":"das Gemüse","ans":"vegetables","options":[],"grp":"Noun"},{"type":"artikel","q":"Gemüse","ans":"das","eng":"vegetables","options":["der","die","das"],"grp":"Noun","full":"das Gemüse"},{"type":"vocab","q":"das Getränk","ans":"drink/beverage","options":[],"grp":"Noun"},{"type":"artikel","q":"Getränk","ans":"das","eng":"drink/beverage","options":["der","die","das"],"grp":"Noun","full":"das Getränk"},{"type":"vocab","q":"der Kaffee","ans":"coffee","options":[],"grp":"Noun"},{"type":"artikel","q":"Kaffee","ans":"der","eng":"coffee","options":["der","die","das"],"grp":"Noun","full":"der Kaffee"},{"type":"vocab","q":"die Lebensmittel","ans":"groceries/food","options":[],"grp":"Noun"},{"type":"artikel","q":"Lebensmittel","ans":"die","eng":"groceries/food","options":["der","die","das"],"grp":"Noun","full":"die Lebensmittel"},{"type":"vocab","q":"die Milch","ans":"milk","options":[],"grp":"Noun"},{"type":"artikel","q":"Milch","ans":"die","eng":"milk","options":["der","die","das"],"grp":"Noun","full":"die Milch"},{"type":"vocab","q":"geben","ans":"to give","options":[],"grp":"Verb"},{"type":"vocab","q":"geboren","ans":"born","options":[],"grp":"Verb"},{"type":"vocab","q":"gefallen","ans":"to please/like","options":[],"grp":"Verb"},{"type":"vocab","q":"gehen","ans":"to go/walk","options":[],"grp":"Verb"},{"type":"vocab","q":"gehören","ans":"to belong to","options":[],"grp":"Verb"},{"type":"vocab","q":"gestorben","ans":"deceased/died","options":[],"grp":"Adjective"},{"type":"vocab","q":"gewinnen","ans":"to win","options":[],"grp":"Verb"},{"type":"vocab","q":"glauben","ans":"to believe/think","options":[],"grp":"Verb"},{"type":"vocab","q":"gratulieren","ans":"to congratulate","options":[],"grp":"Verb"},{"type":"vocab","q":"grillen","ans":"to grill/barbecue","options":[],"grp":"Verb"},{"type":"vocab","q":"haben","ans":"to have","options":[],"grp":"Verb"},{"type":"vocab","q":"halten","ans":"to hold","options":[],"grp":"Verb"},{"type":"vocab","q":"heiraten","ans":"to marry","options":[],"grp":"Verb"},{"type":"vocab","q":"heißen","ans":"to be called","options":[],"grp":"Verb"},{"type":"vocab","q":"glücklich","ans":"happy","options":[],"grp":"Adjective"},{"type":"vocab","q":"groß","ans":"big/tall","options":[],"grp":"Adjective"},{"type":"vocab","q":"gültig","ans":"valid","options":[],"grp":"Adjective"},{"type":"vocab","q":"gut","ans":"good/well","options":[],"grp":"Adjective"},{"type":"vocab","q":"hell","ans":"bright/light","options":[],"grp":"Adjective"},{"type":"vocab","q":"hoch","ans":"high/tall","options":[],"grp":"Adjective"},{"type":"vocab","q":"helfen","ans":"to help","options":[],"grp":"Verb"},{"type":"vocab","q":"hinten","ans":"at the back","options":[],"grp":"Verb"},{"type":"vocab","q":"holen","ans":"to fetch/get","options":[],"grp":"Verb"},{"type":"vocab","q":"hören","ans":"to hear/listen","options":[],"grp":"Verb"},{"type":"vocab","q":"kaufen","ans":"to buy","options":[],"grp":"Verb"},{"type":"vocab","q":"kennenlernen","ans":"to get to know","options":[],"grp":"Verb"},{"type":"vocab","q":"kochen","ans":"to cook","options":[],"grp":"Verb"},{"type":"vocab","q":"kommen","ans":"to come","options":[],"grp":"Verb"},{"type":"vocab","q":"können","ans":"can/to be able to","options":[],"grp":"Verb"},{"type":"vocab","q":"kriegen","ans":"to get (informal)","options":[],"grp":"Verb"},{"type":"vocab","q":"sich kümmern","ans":"to take care of","options":[],"grp":"Verb"},{"type":"vocab","q":"lachen","ans":"to laugh","options":[],"grp":"Verb"},{"type":"vocab","q":"laufen","ans":"to walk/run","options":[],"grp":"Verb"},{"type":"vocab","q":"leben","ans":"to live","options":[],"grp":"Verb"},{"type":"vocab","q":"legen","ans":"to lay/put","options":[],"grp":"Verb"},{"type":"vocab","q":"lernen","ans":"to learn","options":[],"grp":"Verb"},{"type":"vocab","q":"lesen","ans":"to read","options":[],"grp":"Verb"},{"type":"vocab","q":"lieben","ans":"to love","options":[],"grp":"Verb"},{"type":"vocab","q":"liegen","ans":"to lie/be located","options":[],"grp":"Verb"},{"type":"vocab","q":"machen","ans":"to do/make","options":[],"grp":"Verb"},{"type":"vocab","q":"mieten","ans":"to rent","options":[],"grp":"Verb"},{"type":"vocab","q":"mitbringen","ans":"to bring along","options":[],"grp":"Verb"},{"type":"vocab","q":"mitkommen","ans":"to come along","options":[],"grp":"Verb"},{"type":"vocab","q":"mitmachen","ans":"to participate","options":[],"grp":"Verb"},{"type":"vocab","q":"mitnehmen","ans":"to take along","options":[],"grp":"Verb"},{"type":"vocab","q":"möchten","ans":"would like","options":[],"grp":"Verb"},{"type":"vocab","q":"mögen","ans":"to like","options":[],"grp":"Verb"},{"type":"vocab","q":"müssen","ans":"must/to have to","options":[],"grp":"Verb"},{"type":"vocab","q":"nehmen","ans":"to take","options":[],"grp":"Verb"},{"type":"vocab","q":"öffnen","ans":"to open","options":[],"grp":"Verb"},{"type":"vocab","q":"Rad fahren","ans":"to cycle","options":[],"grp":"Verb"},{"type":"vocab","q":"rauchen","ans":"to smoke","options":[],"grp":"Verb"},{"type":"vocab","q":"regnen","ans":"to rain","options":[],"grp":"Verb"},{"type":"vocab","q":"reparieren","ans":"to repair","options":[],"grp":"Verb"},{"type":"vocab","q":"riechen","ans":"to smell","options":[],"grp":"Verb"},{"type":"vocab","q":"das Obst","ans":"fruit","options":[],"grp":"Noun"},{"type":"artikel","q":"Obst","ans":"das","eng":"fruit","options":["der","die","das"],"grp":"Noun","full":"das Obst"},{"type":"vocab","q":"der Preis","ans":"price","options":[],"grp":"Noun"},{"type":"artikel","q":"Preis","ans":"der","eng":"price","options":["der","die","das"],"grp":"Noun","full":"der Preis"},{"type":"vocab","q":"der Reis","ans":"rice","options":[],"grp":"Noun"},{"type":"artikel","q":"Reis","ans":"der","eng":"rice","options":["der","die","das"],"grp":"Noun","full":"der Reis"},{"type":"vocab","q":"die Reise","ans":"trip/journey","options":[],"grp":"Noun"},{"type":"artikel","q":"Reise","ans":"die","eng":"trip/journey","options":["der","die","das"],"grp":"Noun","full":"die Reise"},{"type":"vocab","q":"das Salz","ans":"salt","options":[],"grp":"Noun"},{"type":"artikel","q":"Salz","ans":"das","eng":"salt","options":["der","die","das"],"grp":"Noun","full":"das Salz"},{"type":"vocab","q":"der Tee","ans":"tea","options":[],"grp":"Noun"},{"type":"artikel","q":"Tee","ans":"der","eng":"tea","options":["der","die","das"],"grp":"Noun","full":"der Tee"},{"type":"vocab","q":"scheinen","ans":"to shine/seem","options":[],"grp":"Verb"},{"type":"vocab","q":"schicken","ans":"to send","options":[],"grp":"Verb"},{"type":"vocab","q":"schlafen","ans":"to sleep","options":[],"grp":"Verb"},{"type":"vocab","q":"schließen","ans":"to close","options":[],"grp":"Verb"},{"type":"vocab","q":"geschlossen","ans":"closed","options":[],"grp":"Verb"},{"type":"vocab","q":"schmecken","ans":"to taste","options":[],"grp":"Verb"},{"type":"vocab","q":"schreiben","ans":"to write","options":[],"grp":"Verb"},{"type":"vocab","q":"schwimmen","ans":"to swim","options":[],"grp":"Verb"},{"type":"vocab","q":"sehen","ans":"to see","options":[],"grp":"Verb"},{"type":"vocab","q":"die Sehenswürdigkeit","ans":"sight/attraction","options":[],"grp":"Noun"},{"type":"artikel","q":"Sehenswürdigkeit","ans":"die","eng":"sight/attraction","options":["der","die","das"],"grp":"Noun","full":"die Sehenswürdigkeit"},{"type":"vocab","q":"sitzen","ans":"to sit","options":[],"grp":"Verb"},{"type":"vocab","q":"sollen","ans":"should/shall","options":[],"grp":"Verb"},{"type":"vocab","q":"spielen","ans":"to play","options":[],"grp":"Verb"},{"type":"vocab","q":"stehen","ans":"to stand/be (written)","options":[],"grp":"Verb"},{"type":"vocab","q":"stellen","ans":"to put/place","options":[],"grp":"Verb"},{"type":"vocab","q":"studieren","ans":"to study (university)","options":[],"grp":"Verb"},{"type":"vocab","q":"das Wasser","ans":"water","options":[],"grp":"Noun"},{"type":"artikel","q":"Wasser","ans":"das","eng":"water","options":["der","die","das"],"grp":"Noun","full":"das Wasser"},{"type":"vocab","q":"alt","ans":"old","options":[],"grp":"Adjective"},{"type":"vocab","q":"ausländisch","ans":"foreign","options":[],"grp":"Adjective"},{"type":"vocab","q":"bekannt","ans":"well-known/famous","options":[],"grp":"Adjective"},{"type":"vocab","q":"besser","ans":"better","options":[],"grp":"Adjective"},{"type":"vocab","q":"best","ans":"best","options":[],"grp":"Adjective"},{"type":"vocab","q":"suchen","ans":"to search/look for","options":[],"grp":"Verb"},{"type":"vocab","q":"tanzen","ans":"to dance","options":[],"grp":"Verb"},{"type":"vocab","q":"sich treffen","ans":"to meet","options":[],"grp":"Verb"},{"type":"vocab","q":"trinken","ans":"to drink","options":[],"grp":"Verb"},{"type":"vocab","q":"tun","ans":"to do","options":[],"grp":"Verb"},{"type":"vocab","q":"übernachten","ans":"to stay overnight","options":[],"grp":"Verb"},{"type":"vocab","q":"überweisen","ans":"to transfer (money)","options":[],"grp":"Verb"},{"type":"vocab","q":"umziehen","ans":"to move (house)","options":[],"grp":"Verb"},{"type":"vocab","q":"unterschreiben","ans":"to sign","options":[],"grp":"Verb"},{"type":"vocab","q":"verboten","ans":"forbidden","options":[],"grp":"Verb"},{"type":"vocab","q":"verdienen","ans":"to earn","options":[],"grp":"Verb"},{"type":"vocab","q":"verkaufen","ans":"to sell","options":[],"grp":"Verb"},{"type":"vocab","q":"vermieten","ans":"to rent out","options":[],"grp":"Verb"},{"type":"vocab","q":"verstehen","ans":"to understand","options":[],"grp":"Verb"},{"type":"vocab","q":"sich vorstellen","ans":"to introduce oneself","options":[],"grp":"Verb"},{"type":"vocab","q":"wandern","ans":"to hike","options":[],"grp":"Verb"},{"type":"vocab","q":"warten","ans":"to wait","options":[],"grp":"Verb"},{"type":"vocab","q":"sich waschen","ans":"to wash","options":[],"grp":"Verb"},{"type":"vocab","q":"weh tun","ans":"to hurt","options":[],"grp":"Verb"},{"type":"vocab","q":"böse","ans":"angry/mad","options":[],"grp":"Adjective"},{"type":"vocab","q":"breit","ans":"wide","options":[],"grp":"Adjective"},{"type":"vocab","q":"eilig","ans":"urgent/in a hurry","options":[],"grp":"Adjective"},{"type":"vocab","q":"falsch","ans":"wrong/false","options":[],"grp":"Adjective"},{"type":"vocab","q":"fertig","ans":"finished/ready","options":[],"grp":"Adjective"},{"type":"vocab","q":"frei","ans":"free/available","options":[],"grp":"Adjective"},{"type":"vocab","q":"fremd","ans":"foreign/strange","options":[],"grp":"Adjective"},{"type":"vocab","q":"international","ans":"international","options":[],"grp":"Adjective"},{"type":"vocab","q":"jed-","ans":"every/each","options":[],"grp":"Adjective"},{"type":"vocab","q":"kaputt","ans":"broken","options":[],"grp":"Adjective"},{"type":"vocab","q":"kulturell","ans":"cultural","options":[],"grp":"Adjective"},{"type":"vocab","q":"kurz","ans":"short","options":[],"grp":"Adjective"},{"type":"vocab","q":"lang","ans":"long","options":[],"grp":"Adjective"},{"type":"vocab","q":"laut","ans":"loud","options":[],"grp":"Adjective"},{"type":"vocab","q":"ledig","ans":"single/unmarried","options":[],"grp":"Adjective"},{"type":"vocab","q":"leicht","ans":"light/easy","options":[],"grp":"Adjective"},{"type":"vocab","q":"leise","ans":"quiet(ly)","options":[],"grp":"Adjective"},{"type":"vocab","q":"letzt-","ans":"last","options":[],"grp":"Adjective"},{"type":"vocab","q":"Lieblings-","ans":"favorite","options":[],"grp":"Adjective"},{"type":"vocab","q":"lustig","ans":"funny","options":[],"grp":"Adjective"},{"type":"vocab","q":"männlich","ans":"male","options":[],"grp":"Adjective"},{"type":"vocab","q":"meist-","ans":"most","options":[],"grp":"Adjective"},{"type":"vocab","q":"möglich","ans":"possible","options":[],"grp":"Adjective"},{"type":"vocab","q":"nächst","ans":"next","options":[],"grp":"Adjective"},{"type":"vocab","q":"neu","ans":"new","options":[],"grp":"Adjective"},{"type":"vocab","q":"normal","ans":"normal","options":[],"grp":"Adjective"},{"type":"vocab","q":"geöffnet","ans":"open (adj.)","options":[],"grp":"Adjective"},{"type":"vocab","q":"richtig","ans":"correct/right","options":[],"grp":"Adjective"},{"type":"vocab","q":"ruhig","ans":"quiet/calm","options":[],"grp":"Adjective"},{"type":"vocab","q":"schlecht","ans":"bad","options":[],"grp":"Adjective"},{"type":"vocab","q":"schnell","ans":"fast/quick","options":[],"grp":"Adjective"},{"type":"vocab","q":"schön","ans":"beautiful/nice","options":[],"grp":"Adjective"},{"type":"vocab","q":"schwer","ans":"heavy/difficult","options":[],"grp":"Adjective"},{"type":"vocab","q":"selbstständig","ans":"self-employed","options":[],"grp":"Adjective"},{"type":"vocab","q":"unser","ans":"our","options":[],"grp":"Adjective"},{"type":"vocab","q":"verheiratet","ans":"married","options":[],"grp":"Adjective"},{"type":"vocab","q":"weiblich","ans":"female","options":[],"grp":"Adjective"},{"type":"vocab","q":"weit","ans":"far","options":[],"grp":"Adjective"},{"type":"vocab","q":"welch","ans":"which","options":[],"grp":"Adjective"},{"type":"vocab","q":"wenig","ans":"little/few","options":[],"grp":"Adjective"},{"type":"vocab","q":"wichtig","ans":"important","options":[],"grp":"Adjective"},{"type":"vocab","q":"Grad","ans":"degree","options":[],"grp":"Noun"},{"type":"vocab","q":"jung","ans":"young","options":[],"grp":"Noun"},{"type":"vocab","q":"ab","ans":"from/starting","options":[],"grp":"Preposition"},{"type":"vocab","q":"aber","ans":"but","options":[],"grp":"Conjunction"},{"type":"vocab","q":"der Absender","ans":"sender","options":[],"grp":"Noun"},{"type":"artikel","q":"Absender","ans":"der","eng":"sender","options":["der","die","das"],"grp":"Noun","full":"der Absender"},{"type":"vocab","q":"all","ans":"all/everything","options":[],"grp":"Pronoun"},{"type":"vocab","q":"allein","ans":"alone","options":[],"grp":"Adverb"},{"type":"vocab","q":"das Alter","ans":"age","options":[],"grp":"Noun"},{"type":"artikel","q":"Alter","ans":"das","eng":"age","options":["der","die","das"],"grp":"Noun","full":"das Alter"},{"type":"vocab","q":"an","ans":"at/on","options":[],"grp":"Preposition"},{"type":"vocab","q":"das Angebot","ans":"offer/deal","options":[],"grp":"Noun"},{"type":"artikel","q":"Angebot","ans":"das","eng":"offer/deal","options":["der","die","das"],"grp":"Noun","full":"das Angebot"},{"type":"vocab","q":"ander","ans":"other/different","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Anfang","ans":"beginning","options":[],"grp":"Noun"},{"type":"artikel","q":"Anfang","ans":"der","eng":"beginning","options":["der","die","das"],"grp":"Noun","full":"der Anfang"},{"type":"vocab","q":"die Anmeldung","ans":"registration","options":[],"grp":"Noun"},{"type":"artikel","q":"Anmeldung","ans":"die","eng":"registration","options":["der","die","das"],"grp":"Noun","full":"die Anmeldung"},{"type":"vocab","q":"die Anrede","ans":"salutation","options":[],"grp":"Noun"},{"type":"artikel","q":"Anrede","ans":"die","eng":"salutation","options":["der","die","das"],"grp":"Noun","full":"die Anrede"},{"type":"vocab","q":"die Ansage","ans":"announcement","options":[],"grp":"Noun"},{"type":"artikel","q":"Ansage","ans":"die","eng":"announcement","options":["der","die","das"],"grp":"Noun","full":"die Ansage"},{"type":"vocab","q":"der Anschluss","ans":"connection","options":[],"grp":"Noun"},{"type":"artikel","q":"Anschluss","ans":"der","eng":"connection","options":["der","die","das"],"grp":"Noun","full":"der Anschluss"},{"type":"vocab","q":"die Anzeige","ans":"advertisement/ad","options":[],"grp":"Noun"},{"type":"artikel","q":"Anzeige","ans":"die","eng":"advertisement/ad","options":["der","die","das"],"grp":"Noun","full":"die Anzeige"},{"type":"vocab","q":"der Appetit","ans":"appetite","options":[],"grp":"Noun"},{"type":"artikel","q":"Appetit","ans":"der","eng":"appetite","options":["der","die","das"],"grp":"Noun","full":"der Appetit"},{"type":"vocab","q":"auf","ans":"on/open","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Aufzug","ans":"elevator","options":[],"grp":"Noun"},{"type":"artikel","q":"Aufzug","ans":"der","eng":"elevator","options":["der","die","das"],"grp":"Noun","full":"der Aufzug"},{"type":"vocab","q":"aus","ans":"from/out of","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Ausgang","ans":"exit","options":[],"grp":"Noun"},{"type":"artikel","q":"Ausgang","ans":"der","eng":"exit","options":["der","die","das"],"grp":"Noun","full":"der Ausgang"},{"type":"vocab","q":"die Auskunft","ans":"information","options":[],"grp":"Noun"},{"type":"artikel","q":"Auskunft","ans":"die","eng":"information","options":["der","die","das"],"grp":"Noun","full":"die Auskunft"},{"type":"vocab","q":"der Ausländer","ans":"foreigner","options":[],"grp":"Noun"},{"type":"artikel","q":"Ausländer","ans":"der","eng":"foreigner","options":["der","die","das"],"grp":"Noun","full":"der Ausländer"},{"type":"vocab","q":"die Aussage","ans":"statement","options":[],"grp":"Noun"},{"type":"artikel","q":"Aussage","ans":"die","eng":"statement","options":["der","die","das"],"grp":"Noun","full":"die Aussage"},{"type":"vocab","q":"das Baby","ans":"baby","options":[],"grp":"Noun"},{"type":"artikel","q":"Baby","ans":"das","eng":"baby","options":["der","die","das"],"grp":"Noun","full":"das Baby"},{"type":"vocab","q":"die Bäckerei","ans":"bakery","options":[],"grp":"Noun"},{"type":"artikel","q":"Bäckerei","ans":"die","eng":"bakery","options":["der","die","das"],"grp":"Noun","full":"die Bäckerei"},{"type":"vocab","q":"der Bahnsteig","ans":"platform","options":[],"grp":"Noun"},{"type":"artikel","q":"Bahnsteig","ans":"der","eng":"platform","options":["der","die","das"],"grp":"Noun","full":"der Bahnsteig"},{"type":"vocab","q":"der Balkon","ans":"balcony","options":[],"grp":"Noun"},{"type":"artikel","q":"Balkon","ans":"der","eng":"balcony","options":["der","die","das"],"grp":"Noun","full":"der Balkon"},{"type":"vocab","q":"der Bauch","ans":"stomach/belly","options":[],"grp":"Noun"},{"type":"artikel","q":"Bauch","ans":"der","eng":"stomach/belly","options":["der","die","das"],"grp":"Noun","full":"der Bauch"},{"type":"vocab","q":"der Beamte","ans":"official/civil servant","options":[],"grp":"Noun"},{"type":"artikel","q":"Beamte","ans":"der","eng":"official/civil servant","options":["der","die","das"],"grp":"Noun","full":"der Beamte"},{"type":"vocab","q":"beide","ans":"both","options":[],"grp":"Pronoun"},{"type":"vocab","q":"der/die Bekannte","ans":"acquaintance","options":[],"grp":"Noun"},{"type":"vocab","q":"das Bier","ans":"beer","options":[],"grp":"Noun"},{"type":"artikel","q":"Bier","ans":"das","eng":"beer","options":["der","die","das"],"grp":"Noun","full":"das Bier"},{"type":"vocab","q":"das Bild","ans":"picture/image","options":[],"grp":"Noun"},{"type":"artikel","q":"Bild","ans":"das","eng":"picture/image","options":["der","die","das"],"grp":"Noun","full":"das Bild"},{"type":"vocab","q":"bis","ans":"until/to","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Blick","ans":"view/look","options":[],"grp":"Noun"},{"type":"artikel","q":"Blick","ans":"der","eng":"view/look","options":["der","die","das"],"grp":"Noun","full":"der Blick"},{"type":"vocab","q":"der Bogen","ans":"sheet (of paper)","options":[],"grp":"Noun"},{"type":"artikel","q":"Bogen","ans":"der","eng":"sheet (of paper)","options":["der","die","das"],"grp":"Noun","full":"der Bogen"},{"type":"vocab","q":"die Butter","ans":"butter","options":[],"grp":"Noun"},{"type":"artikel","q":"Butter","ans":"die","eng":"butter","options":["der","die","das"],"grp":"Noun","full":"die Butter"},{"type":"vocab","q":"das Café","ans":"café","options":[],"grp":"Noun"},{"type":"artikel","q":"Café","ans":"das","eng":"café","options":["der","die","das"],"grp":"Noun","full":"das Café"},{"type":"vocab","q":"die CD","ans":"CD","options":[],"grp":"Noun"},{"type":"artikel","q":"CD","ans":"die","eng":"CD","options":["der","die","das"],"grp":"Noun","full":"die CD"},{"type":"vocab","q":"der Computer","ans":"computer","options":[],"grp":"Noun"},{"type":"artikel","q":"Computer","ans":"der","eng":"computer","options":["der","die","das"],"grp":"Noun","full":"der Computer"},{"type":"vocab","q":"die Dame","ans":"lady","options":[],"grp":"Noun"},{"type":"artikel","q":"Dame","ans":"die","eng":"lady","options":["der","die","das"],"grp":"Noun","full":"die Dame"},{"type":"vocab","q":"dein","ans":"your (informal)","options":[],"grp":"Adjective"},{"type":"vocab","q":"denn","ans":"because/for","options":[],"grp":"Conjunction"},{"type":"vocab","q":"der/die/das","ans":"the","options":[],"grp":"Article"},{"type":"vocab","q":"dich","ans":"you (accusative)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"dies","ans":"this/these","options":[],"grp":"Adjective"},{"type":"vocab","q":"dir","ans":"you (dative)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"die Disco","ans":"disco/club","options":[],"grp":"Noun"},{"type":"artikel","q":"Disco","ans":"die","eng":"disco/club","options":["der","die","das"],"grp":"Noun","full":"die Disco"},{"type":"vocab","q":"der Drucker","ans":"printer","options":[],"grp":"Noun"},{"type":"artikel","q":"Drucker","ans":"der","eng":"printer","options":["der","die","das"],"grp":"Noun","full":"der Drucker"},{"type":"vocab","q":"durch","ans":"through","options":[],"grp":"Preposition"},{"type":"vocab","q":"die Durchsage","ans":"announcement","options":[],"grp":"Noun"},{"type":"artikel","q":"Durchsage","ans":"die","eng":"announcement","options":["der","die","das"],"grp":"Noun","full":"die Durchsage"},{"type":"vocab","q":"der Durst","ans":"thirst","options":[],"grp":"Noun"},{"type":"artikel","q":"Durst","ans":"der","eng":"thirst","options":["der","die","das"],"grp":"Noun","full":"der Durst"},{"type":"vocab","q":"die Dusche","ans":"shower","options":[],"grp":"Noun"},{"type":"artikel","q":"Dusche","ans":"die","eng":"shower","options":["der","die","das"],"grp":"Noun","full":"die Dusche"},{"type":"vocab","q":"die Ecke","ans":"corner","options":[],"grp":"Noun"},{"type":"artikel","q":"Ecke","ans":"die","eng":"corner","options":["der","die","das"],"grp":"Noun","full":"die Ecke"},{"type":"vocab","q":"das Ei","ans":"egg","options":[],"grp":"Noun"},{"type":"artikel","q":"Ei","ans":"das","eng":"egg","options":["der","die","das"],"grp":"Noun","full":"das Ei"},{"type":"vocab","q":"ein","ans":"one/a","options":[],"grp":"Adjective"},{"type":"vocab","q":"einfach","ans":"simple/easy; single","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Eingang","ans":"entrance","options":[],"grp":"Noun"},{"type":"artikel","q":"Eingang","ans":"der","eng":"entrance","options":["der","die","das"],"grp":"Noun","full":"der Eingang"},{"type":"vocab","q":"die Einladung","ans":"invitation","options":[],"grp":"Noun"},{"type":"artikel","q":"Einladung","ans":"die","eng":"invitation","options":["der","die","das"],"grp":"Noun","full":"die Einladung"},{"type":"vocab","q":"einmal","ans":"once","options":[],"grp":"Adverb"},{"type":"vocab","q":"der Eintritt","ans":"entry/admission","options":[],"grp":"Noun"},{"type":"artikel","q":"Eintritt","ans":"der","eng":"entry/admission","options":["der","die","das"],"grp":"Noun","full":"der Eintritt"},{"type":"vocab","q":"das Einzelzimmer","ans":"single room","options":[],"grp":"Noun"},{"type":"artikel","q":"Einzelzimmer","ans":"das","eng":"single room","options":["der","die","das"],"grp":"Noun","full":"das Einzelzimmer"},{"type":"vocab","q":"der Empfänger","ans":"recipient","options":[],"grp":"Noun"},{"type":"artikel","q":"Empfänger","ans":"der","eng":"recipient","options":["der","die","das"],"grp":"Noun","full":"der Empfänger"},{"type":"vocab","q":"das Ende","ans":"end","options":[],"grp":"Noun"},{"type":"artikel","q":"Ende","ans":"das","eng":"end","options":["der","die","das"],"grp":"Noun","full":"das Ende"},{"type":"vocab","q":"er","ans":"he","options":[],"grp":"Pronoun"},{"type":"vocab","q":"das Ergebnis","ans":"result","options":[],"grp":"Noun"},{"type":"artikel","q":"Ergebnis","ans":"das","eng":"result","options":["der","die","das"],"grp":"Noun","full":"das Ergebnis"},{"type":"vocab","q":"der Erwachsene","ans":"adult","options":[],"grp":"Noun"},{"type":"artikel","q":"Erwachsene","ans":"der","eng":"adult","options":["der","die","das"],"grp":"Noun","full":"der Erwachsene"},{"type":"vocab","q":"es","ans":"it","options":[],"grp":"Pronoun"},{"type":"vocab","q":"euer","ans":"your (plural informal)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"der Familienstand","ans":"marital status","options":[],"grp":"Noun"},{"type":"artikel","q":"Familienstand","ans":"der","eng":"marital status","options":["der","die","das"],"grp":"Noun","full":"der Familienstand"},{"type":"vocab","q":"das Fax","ans":"fax","options":[],"grp":"Noun"},{"type":"artikel","q":"Fax","ans":"das","eng":"fax","options":["der","die","das"],"grp":"Noun","full":"das Fax"},{"type":"vocab","q":"der Fehler","ans":"mistake/error","options":[],"grp":"Noun"},{"type":"artikel","q":"Fehler","ans":"der","eng":"mistake/error","options":["der","die","das"],"grp":"Noun","full":"der Fehler"},{"type":"vocab","q":"das Feuer","ans":"fire/light","options":[],"grp":"Noun"},{"type":"artikel","q":"Feuer","ans":"das","eng":"fire/light","options":["der","die","das"],"grp":"Noun","full":"das Feuer"},{"type":"vocab","q":"der Film","ans":"film/movie","options":[],"grp":"Noun"},{"type":"artikel","q":"Film","ans":"der","eng":"film/movie","options":["der","die","das"],"grp":"Noun","full":"der Film"},{"type":"vocab","q":"die Flasche","ans":"bottle","options":[],"grp":"Noun"},{"type":"artikel","q":"Flasche","ans":"die","eng":"bottle","options":["der","die","das"],"grp":"Noun","full":"die Flasche"},{"type":"vocab","q":"das Formular","ans":"form (document)","options":[],"grp":"Noun"},{"type":"artikel","q":"Formular","ans":"das","eng":"form (document)","options":["der","die","das"],"grp":"Noun","full":"das Formular"},{"type":"vocab","q":"die Führung","ans":"guided tour","options":[],"grp":"Noun"},{"type":"artikel","q":"Führung","ans":"die","eng":"guided tour","options":["der","die","das"],"grp":"Noun","full":"die Führung"},{"type":"vocab","q":"für","ans":"for","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Fuß","ans":"foot","options":[],"grp":"Noun"},{"type":"artikel","q":"Fuß","ans":"der","eng":"foot","options":["der","die","das"],"grp":"Noun","full":"der Fuß"},{"type":"vocab","q":"der Fußball","ans":"football/soccer","options":[],"grp":"Noun"},{"type":"artikel","q":"Fußball","ans":"der","eng":"football/soccer","options":["der","die","das"],"grp":"Noun","full":"der Fußball"},{"type":"vocab","q":"der Garten","ans":"garden","options":[],"grp":"Noun"},{"type":"artikel","q":"Garten","ans":"der","eng":"garden","options":["der","die","das"],"grp":"Noun","full":"der Garten"},{"type":"vocab","q":"der Gast","ans":"guest","options":[],"grp":"Noun"},{"type":"artikel","q":"Gast","ans":"der","eng":"guest","options":["der","die","das"],"grp":"Noun","full":"der Gast"},{"type":"vocab","q":"gegen","ans":"against/around","options":[],"grp":"Preposition"},{"type":"vocab","q":"das Gepäck","ans":"luggage","options":[],"grp":"Noun"},{"type":"artikel","q":"Gepäck","ans":"das","eng":"luggage","options":["der","die","das"],"grp":"Noun","full":"das Gepäck"},{"type":"vocab","q":"das Geschenk","ans":"gift/present","options":[],"grp":"Noun"},{"type":"artikel","q":"Geschenk","ans":"das","eng":"gift/present","options":["der","die","das"],"grp":"Noun","full":"das Geschenk"},{"type":"vocab","q":"die Geschwister","ans":"siblings","options":[],"grp":"Noun"},{"type":"artikel","q":"Geschwister","ans":"die","eng":"siblings","options":["der","die","das"],"grp":"Noun","full":"die Geschwister"},{"type":"vocab","q":"das Gespräch","ans":"conversation","options":[],"grp":"Noun"},{"type":"artikel","q":"Gespräch","ans":"das","eng":"conversation","options":["der","die","das"],"grp":"Noun","full":"das Gespräch"},{"type":"vocab","q":"das Gewicht","ans":"weight","options":[],"grp":"Noun"},{"type":"artikel","q":"Gewicht","ans":"das","eng":"weight","options":["der","die","das"],"grp":"Noun","full":"das Gewicht"},{"type":"vocab","q":"das Glas","ans":"glass","options":[],"grp":"Noun"},{"type":"artikel","q":"Glas","ans":"das","eng":"glass","options":["der","die","das"],"grp":"Noun","full":"das Glas"},{"type":"vocab","q":"das Gleis","ans":"track/platform","options":[],"grp":"Noun"},{"type":"artikel","q":"Gleis","ans":"das","eng":"track/platform","options":["der","die","das"],"grp":"Noun","full":"das Gleis"},{"type":"vocab","q":"das Glück","ans":"luck/happiness","options":[],"grp":"Noun"},{"type":"artikel","q":"Glück","ans":"das","eng":"luck/happiness","options":["der","die","das"],"grp":"Noun","full":"das Glück"},{"type":"vocab","q":"der Glückwunsch","ans":"congratulations","options":[],"grp":"Noun"},{"type":"artikel","q":"Glückwunsch","ans":"der","eng":"congratulations","options":["der","die","das"],"grp":"Noun","full":"der Glückwunsch"},{"type":"vocab","q":"die Größe","ans":"size","options":[],"grp":"Noun"},{"type":"artikel","q":"Größe","ans":"die","eng":"size","options":["der","die","das"],"grp":"Noun","full":"die Größe"},{"type":"vocab","q":"die Gruppe","ans":"group","options":[],"grp":"Noun"},{"type":"artikel","q":"Gruppe","ans":"die","eng":"group","options":["der","die","das"],"grp":"Noun","full":"die Gruppe"},{"type":"vocab","q":"das Haar","ans":"hair","options":[],"grp":"Noun"},{"type":"artikel","q":"Haar","ans":"das","eng":"hair","options":["der","die","das"],"grp":"Noun","full":"das Haar"},{"type":"vocab","q":"das Hähnchen","ans":"chicken","options":[],"grp":"Noun"},{"type":"artikel","q":"Hähnchen","ans":"das","eng":"chicken","options":["der","die","das"],"grp":"Noun","full":"das Hähnchen"},{"type":"vocab","q":"die Halbpension","ans":"half board","options":[],"grp":"Noun"},{"type":"artikel","q":"Halbpension","ans":"die","eng":"half board","options":["der","die","das"],"grp":"Noun","full":"die Halbpension"},{"type":"vocab","q":"die Halle","ans":"hall","options":[],"grp":"Noun"},{"type":"artikel","q":"Halle","ans":"die","eng":"hall","options":["der","die","das"],"grp":"Noun","full":"die Halle"},{"type":"vocab","q":"die Hand","ans":"hand","options":[],"grp":"Noun"},{"type":"artikel","q":"Hand","ans":"die","eng":"hand","options":["der","die","das"],"grp":"Noun","full":"die Hand"},{"type":"vocab","q":"die Heimat","ans":"homeland","options":[],"grp":"Noun"},{"type":"artikel","q":"Heimat","ans":"die","eng":"homeland","options":["der","die","das"],"grp":"Noun","full":"die Heimat"},{"type":"vocab","q":"der Herd","ans":"stove/cooker","options":[],"grp":"Noun"},{"type":"artikel","q":"Herd","ans":"der","eng":"stove/cooker","options":["der","die","das"],"grp":"Noun","full":"der Herd"},{"type":"vocab","q":"der Herr","ans":"Mr./gentleman","options":[],"grp":"Noun"},{"type":"artikel","q":"Herr","ans":"der","eng":"Mr./gentleman","options":["der","die","das"],"grp":"Noun","full":"der Herr"},{"type":"vocab","q":"die Hilfe","ans":"help","options":[],"grp":"Noun"},{"type":"artikel","q":"Hilfe","ans":"die","eng":"help","options":["der","die","das"],"grp":"Noun","full":"die Hilfe"},{"type":"vocab","q":"das Hobby","ans":"hobby","options":[],"grp":"Noun"},{"type":"artikel","q":"Hobby","ans":"das","eng":"hobby","options":["der","die","das"],"grp":"Noun","full":"das Hobby"},{"type":"vocab","q":"der Hund","ans":"dog","options":[],"grp":"Noun"},{"type":"artikel","q":"Hund","ans":"der","eng":"dog","options":["der","die","das"],"grp":"Noun","full":"der Hund"},{"type":"vocab","q":"der Hunger","ans":"hunger","options":[],"grp":"Noun"},{"type":"artikel","q":"Hunger","ans":"der","eng":"hunger","options":["der","die","das"],"grp":"Noun","full":"der Hunger"},{"type":"vocab","q":"ich","ans":"I","options":[],"grp":"Pronoun"},{"type":"vocab","q":"ihr/ihm/ihn","ans":"her/him (dative/accusative)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"immer","ans":"always","options":[],"grp":"Adverb"},{"type":"vocab","q":"in","ans":"in/into","options":[],"grp":"Preposition"},{"type":"vocab","q":"die Information","ans":"information","options":[],"grp":"Noun"},{"type":"artikel","q":"Information","ans":"die","eng":"information","options":["der","die","das"],"grp":"Noun","full":"die Information"},{"type":"vocab","q":"das Internet","ans":"internet","options":[],"grp":"Noun"},{"type":"artikel","q":"Internet","ans":"das","eng":"internet","options":["der","die","das"],"grp":"Noun","full":"das Internet"},{"type":"vocab","q":"ja","ans":"yes","options":[],"grp":"Particle"},{"type":"vocab","q":"der Junge","ans":"boy","options":[],"grp":"Noun"},{"type":"artikel","q":"Junge","ans":"der","eng":"boy","options":["der","die","das"],"grp":"Noun","full":"der Junge"},{"type":"vocab","q":"die Kartoffel","ans":"potato","options":[],"grp":"Noun"},{"type":"artikel","q":"Kartoffel","ans":"die","eng":"potato","options":["der","die","das"],"grp":"Noun","full":"die Kartoffel"},{"type":"vocab","q":"kein","ans":"no/none","options":[],"grp":"Article"},{"type":"vocab","q":"der Kiosk","ans":"kiosk","options":[],"grp":"Noun"},{"type":"artikel","q":"Kiosk","ans":"der","eng":"kiosk","options":["der","die","das"],"grp":"Noun","full":"der Kiosk"},{"type":"vocab","q":"die Klasse","ans":"class","options":[],"grp":"Noun"},{"type":"artikel","q":"Klasse","ans":"die","eng":"class","options":["der","die","das"],"grp":"Noun","full":"die Klasse"},{"type":"vocab","q":"klein","ans":"small/little","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Kuchen","ans":"cake","options":[],"grp":"Noun"},{"type":"artikel","q":"Kuchen","ans":"der","eng":"cake","options":["der","die","das"],"grp":"Noun","full":"der Kuchen"},{"type":"vocab","q":"der Kugelschreiber","ans":"pen (ballpoint)","options":[],"grp":"Noun"},{"type":"artikel","q":"Kugelschreiber","ans":"der","eng":"pen (ballpoint)","options":["der","die","das"],"grp":"Noun","full":"der Kugelschreiber"},{"type":"vocab","q":"der Kunde","ans":"customer","options":[],"grp":"Noun"},{"type":"artikel","q":"Kunde","ans":"der","eng":"customer","options":["der","die","das"],"grp":"Noun","full":"der Kunde"},{"type":"vocab","q":"der Kurs","ans":"course","options":[],"grp":"Noun"},{"type":"artikel","q":"Kurs","ans":"der","eng":"course","options":["der","die","das"],"grp":"Noun","full":"der Kurs"},{"type":"vocab","q":"langsam","ans":"slow(ly)","options":[],"grp":"Adjective"},{"type":"vocab","q":"das Leben","ans":"life","options":[],"grp":"Noun"},{"type":"artikel","q":"Leben","ans":"das","eng":"life","options":["der","die","das"],"grp":"Noun","full":"das Leben"},{"type":"vocab","q":"leider","ans":"unfortunately","options":[],"grp":"Adverb"},{"type":"vocab","q":"das Licht","ans":"light","options":[],"grp":"Noun"},{"type":"artikel","q":"Licht","ans":"das","eng":"light","options":["der","die","das"],"grp":"Noun","full":"das Licht"},{"type":"vocab","q":"der Lkw","ans":"truck","options":[],"grp":"Noun"},{"type":"artikel","q":"Lkw","ans":"der","eng":"truck","options":["der","die","das"],"grp":"Noun","full":"der Lkw"},{"type":"vocab","q":"die Lösung","ans":"solution","options":[],"grp":"Noun"},{"type":"artikel","q":"Lösung","ans":"die","eng":"solution","options":["der","die","das"],"grp":"Noun","full":"die Lösung"},{"type":"vocab","q":"das Mädchen","ans":"girl","options":[],"grp":"Noun"},{"type":"artikel","q":"Mädchen","ans":"das","eng":"girl","options":["der","die","das"],"grp":"Noun","full":"das Mädchen"},{"type":"vocab","q":"die Maschine","ans":"machine","options":[],"grp":"Noun"},{"type":"artikel","q":"Maschine","ans":"die","eng":"machine","options":["der","die","das"],"grp":"Noun","full":"die Maschine"},{"type":"vocab","q":"mehr","ans":"more","options":[],"grp":"Pronoun"},{"type":"vocab","q":"mein","ans":"my","options":[],"grp":"Pronoun"},{"type":"vocab","q":"die Miete","ans":"rent","options":[],"grp":"Noun"},{"type":"artikel","q":"Miete","ans":"die","eng":"rent","options":["der","die","das"],"grp":"Noun","full":"die Miete"},{"type":"vocab","q":"mit","ans":"with","options":[],"grp":"Preposition"},{"type":"vocab","q":"die Mitte","ans":"middle/center","options":[],"grp":"Noun"},{"type":"artikel","q":"Mitte","ans":"die","eng":"middle/center","options":["der","die","das"],"grp":"Noun","full":"die Mitte"},{"type":"vocab","q":"der Moment","ans":"moment","options":[],"grp":"Noun"},{"type":"artikel","q":"Moment","ans":"der","eng":"moment","options":["der","die","das"],"grp":"Noun","full":"der Moment"},{"type":"vocab","q":"nach","ans":"to/after","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Name","ans":"name","options":[],"grp":"Noun"},{"type":"artikel","q":"Name","ans":"der","eng":"name","options":["der","die","das"],"grp":"Noun","full":"der Name"},{"type":"vocab","q":"nein","ans":"no","options":[],"grp":"Particle"},{"type":"vocab","q":"nicht","ans":"not","options":[],"grp":"Particle"},{"type":"vocab","q":"nichts","ans":"nothing","options":[],"grp":"Pronoun"},{"type":"vocab","q":"die Nummer","ans":"number","options":[],"grp":"Noun"},{"type":"artikel","q":"Nummer","ans":"die","eng":"number","options":["der","die","das"],"grp":"Noun","full":"die Nummer"},{"type":"vocab","q":"oder","ans":"or","options":[],"grp":"Conjunction"},{"type":"vocab","q":"ohne","ans":"without","options":[],"grp":"Preposition"},{"type":"vocab","q":"das Öl","ans":"oil","options":[],"grp":"Noun"},{"type":"artikel","q":"Öl","ans":"das","eng":"oil","options":["der","die","das"],"grp":"Noun","full":"das Öl"},{"type":"vocab","q":"die Ordnung","ans":"order","options":[],"grp":"Noun"},{"type":"artikel","q":"Ordnung","ans":"die","eng":"order","options":["der","die","das"],"grp":"Noun","full":"die Ordnung"},{"type":"vocab","q":"das Papier","ans":"paper","options":[],"grp":"Noun"},{"type":"artikel","q":"Papier","ans":"das","eng":"paper","options":["der","die","das"],"grp":"Noun","full":"das Papier"},{"type":"vocab","q":"die Papiere","ans":"documents/papers","options":[],"grp":"Noun"},{"type":"artikel","q":"Papiere","ans":"die","eng":"documents/papers","options":["der","die","das"],"grp":"Noun","full":"die Papiere"},{"type":"vocab","q":"der Partner / die Partnerin","ans":"partner","options":[],"grp":"Noun"},{"type":"vocab","q":"die Party","ans":"party","options":[],"grp":"Noun"},{"type":"artikel","q":"Party","ans":"die","eng":"party","options":["der","die","das"],"grp":"Noun","full":"die Party"},{"type":"vocab","q":"der Pass","ans":"passport","options":[],"grp":"Noun"},{"type":"artikel","q":"Pass","ans":"der","eng":"passport","options":["der","die","das"],"grp":"Noun","full":"der Pass"},{"type":"vocab","q":"die Pause","ans":"break/pause","options":[],"grp":"Noun"},{"type":"artikel","q":"Pause","ans":"die","eng":"break/pause","options":["der","die","das"],"grp":"Noun","full":"die Pause"},{"type":"vocab","q":"der Plan","ans":"plan/map","options":[],"grp":"Noun"},{"type":"artikel","q":"Plan","ans":"der","eng":"plan/map","options":["der","die","das"],"grp":"Noun","full":"der Plan"},{"type":"vocab","q":"die Pommes frites","ans":"French fries","options":[],"grp":"Noun"},{"type":"artikel","q":"Pommes frites","ans":"die","eng":"French fries","options":["der","die","das"],"grp":"Noun","full":"die Pommes frites"},{"type":"vocab","q":"das Praktikum","ans":"internship","options":[],"grp":"Noun"},{"type":"artikel","q":"Praktikum","ans":"das","eng":"internship","options":["der","die","das"],"grp":"Noun","full":"das Praktikum"},{"type":"vocab","q":"das Problem","ans":"problem","options":[],"grp":"Noun"},{"type":"artikel","q":"Problem","ans":"das","eng":"problem","options":["der","die","das"],"grp":"Noun","full":"das Problem"},{"type":"vocab","q":"der Prospekt","ans":"brochure","options":[],"grp":"Noun"},{"type":"artikel","q":"Prospekt","ans":"der","eng":"brochure","options":["der","die","das"],"grp":"Noun","full":"der Prospekt"},{"type":"vocab","q":"die Reparatur","ans":"repair","options":[],"grp":"Noun"},{"type":"artikel","q":"Reparatur","ans":"die","eng":"repair","options":["der","die","das"],"grp":"Noun","full":"die Reparatur"},{"type":"vocab","q":"der Saft","ans":"juice","options":[],"grp":"Noun"},{"type":"artikel","q":"Saft","ans":"der","eng":"juice","options":["der","die","das"],"grp":"Noun","full":"der Saft"},{"type":"vocab","q":"der Salat","ans":"salad","options":[],"grp":"Noun"},{"type":"artikel","q":"Salat","ans":"der","eng":"salad","options":["der","die","das"],"grp":"Noun","full":"der Salat"},{"type":"vocab","q":"der Satz","ans":"sentence","options":[],"grp":"Noun"},{"type":"artikel","q":"Satz","ans":"der","eng":"sentence","options":["der","die","das"],"grp":"Noun","full":"der Satz"},{"type":"vocab","q":"der Schalter","ans":"counter/switch","options":[],"grp":"Noun"},{"type":"artikel","q":"Schalter","ans":"der","eng":"counter/switch","options":["der","die","das"],"grp":"Noun","full":"der Schalter"},{"type":"vocab","q":"das Schild","ans":"sign","options":[],"grp":"Noun"},{"type":"artikel","q":"Schild","ans":"das","eng":"sign","options":["der","die","das"],"grp":"Noun","full":"das Schild"},{"type":"vocab","q":"der Schinken","ans":"ham","options":[],"grp":"Noun"},{"type":"artikel","q":"Schinken","ans":"der","eng":"ham","options":["der","die","das"],"grp":"Noun","full":"der Schinken"},{"type":"vocab","q":"der Schluss","ans":"end/conclusion","options":[],"grp":"Noun"},{"type":"artikel","q":"Schluss","ans":"der","eng":"end/conclusion","options":["der","die","das"],"grp":"Noun","full":"der Schluss"},{"type":"vocab","q":"der Schlüssel","ans":"key","options":[],"grp":"Noun"},{"type":"artikel","q":"Schlüssel","ans":"der","eng":"key","options":["der","die","das"],"grp":"Noun","full":"der Schlüssel"},{"type":"vocab","q":"das Schwimmbad","ans":"swimming pool","options":[],"grp":"Noun"},{"type":"artikel","q":"Schwimmbad","ans":"das","eng":"swimming pool","options":["der","die","das"],"grp":"Noun","full":"das Schwimmbad"},{"type":"vocab","q":"sein","ans":"to be","options":[],"grp":"Pronoun"},{"type":"vocab","q":"seit","ans":"since/for","options":[],"grp":"Preposition"},{"type":"vocab","q":"sich","ans":"oneself (reflexive)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"sie","ans":"she/they","options":[],"grp":"Pronoun"},{"type":"vocab","q":"Sie","ans":"you (formal)","options":[],"grp":"Pronoun"},{"type":"vocab","q":"der Sport","ans":"sport","options":[],"grp":"Noun"},{"type":"artikel","q":"Sport","ans":"der","eng":"sport","options":["der","die","das"],"grp":"Noun","full":"der Sport"},{"type":"vocab","q":"der Stock","ans":"floor/story","options":[],"grp":"Noun"},{"type":"artikel","q":"Stock","ans":"der","eng":"floor/story","options":["der","die","das"],"grp":"Noun","full":"der Stock"},{"type":"vocab","q":"die Tasche","ans":"bag/pocket","options":[],"grp":"Noun"},{"type":"artikel","q":"Tasche","ans":"die","eng":"bag/pocket","options":["der","die","das"],"grp":"Noun","full":"die Tasche"},{"type":"vocab","q":"der Teil","ans":"part","options":[],"grp":"Noun"},{"type":"artikel","q":"Teil","ans":"der","eng":"part","options":["der","die","das"],"grp":"Noun","full":"der Teil"},{"type":"vocab","q":"der Termin","ans":"appointment","options":[],"grp":"Noun"},{"type":"artikel","q":"Termin","ans":"der","eng":"appointment","options":["der","die","das"],"grp":"Noun","full":"der Termin"},{"type":"vocab","q":"der Test","ans":"test","options":[],"grp":"Noun"},{"type":"artikel","q":"Test","ans":"der","eng":"test","options":["der","die","das"],"grp":"Noun","full":"der Test"},{"type":"vocab","q":"der Text","ans":"text","options":[],"grp":"Noun"},{"type":"artikel","q":"Text","ans":"der","eng":"text","options":["der","die","das"],"grp":"Noun","full":"der Text"},{"type":"vocab","q":"das Thema","ans":"topic/subject","options":[],"grp":"Noun"},{"type":"artikel","q":"Thema","ans":"das","eng":"topic/subject","options":["der","die","das"],"grp":"Noun","full":"das Thema"},{"type":"vocab","q":"die Toilette","ans":"toilet","options":[],"grp":"Noun"},{"type":"artikel","q":"Toilette","ans":"die","eng":"toilet","options":["der","die","das"],"grp":"Noun","full":"die Toilette"},{"type":"vocab","q":"die Treppe","ans":"stairs","options":[],"grp":"Noun"},{"type":"artikel","q":"Treppe","ans":"die","eng":"stairs","options":["der","die","das"],"grp":"Noun","full":"die Treppe"},{"type":"vocab","q":"über","ans":"over/about/above","options":[],"grp":"Preposition"},{"type":"vocab","q":"und","ans":"and","options":[],"grp":"Conjunction"},{"type":"vocab","q":"unter","ans":"under/below","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Verein","ans":"club/association","options":[],"grp":"Noun"},{"type":"artikel","q":"Verein","ans":"der","eng":"club/association","options":["der","die","das"],"grp":"Noun","full":"der Verein"},{"type":"vocab","q":"der Vermieter","ans":"landlord","options":[],"grp":"Noun"},{"type":"artikel","q":"Vermieter","ans":"der","eng":"landlord","options":["der","die","das"],"grp":"Noun","full":"der Vermieter"},{"type":"vocab","q":"viel","ans":"much/a lot","options":[],"grp":"Pronoun"},{"type":"vocab","q":"von","ans":"from/of","options":[],"grp":"Preposition"},{"type":"vocab","q":"vor","ans":"before/in front of","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Vorname","ans":"first name","options":[],"grp":"Noun"},{"type":"artikel","q":"Vorname","ans":"der","eng":"first name","options":["der","die","das"],"grp":"Noun","full":"der Vorname"},{"type":"vocab","q":"die Vorsicht","ans":"caution","options":[],"grp":"Noun"},{"type":"artikel","q":"Vorsicht","ans":"die","eng":"caution","options":["der","die","das"],"grp":"Noun","full":"die Vorsicht"},{"type":"vocab","q":"die Vorwahl","ans":"area code","options":[],"grp":"Noun"},{"type":"artikel","q":"Vorwahl","ans":"die","eng":"area code","options":["der","die","das"],"grp":"Noun","full":"die Vorwahl"},{"type":"vocab","q":"der Wein","ans":"wine","options":[],"grp":"Noun"},{"type":"artikel","q":"Wein","ans":"der","eng":"wine","options":["der","die","das"],"grp":"Noun","full":"der Wein"},{"type":"vocab","q":"die Welt","ans":"world","options":[],"grp":"Noun"},{"type":"artikel","q":"Welt","ans":"die","eng":"world","options":["der","die","das"],"grp":"Noun","full":"die Welt"},{"type":"vocab","q":"wer","ans":"who","options":[],"grp":"Pronoun"},{"type":"vocab","q":"wie","ans":"how/like","options":[],"grp":"Conjunction"},{"type":"vocab","q":"das Wiederhören","ans":"goodbye (phone)","options":[],"grp":"Noun"},{"type":"artikel","q":"Wiederhören","ans":"das","eng":"goodbye (phone)","options":["der","die","das"],"grp":"Noun","full":"das Wiederhören"},{"type":"vocab","q":"das Wiedersehen","ans":"goodbye","options":[],"grp":"Noun"},{"type":"artikel","q":"Wiedersehen","ans":"das","eng":"goodbye","options":["der","die","das"],"grp":"Noun","full":"das Wiedersehen"},{"type":"vocab","q":"wir","ans":"we","options":[],"grp":"Pronoun"},{"type":"vocab","q":"wunderbar","ans":"wonderful","options":[],"grp":"Adjective"},{"type":"vocab","q":"die Zigarette","ans":"cigarette","options":[],"grp":"Noun"},{"type":"artikel","q":"Zigarette","ans":"die","eng":"cigarette","options":["der","die","das"],"grp":"Noun","full":"die Zigarette"},{"type":"vocab","q":"der Zoll","ans":"customs","options":[],"grp":"Noun"},{"type":"artikel","q":"Zoll","ans":"der","eng":"customs","options":["der","die","das"],"grp":"Noun","full":"der Zoll"},{"type":"vocab","q":"zu","ans":"to/too/closed","options":[],"grp":"Preposition"},{"type":"vocab","q":"zurück","ans":"back","options":[],"grp":"Adverb"},{"type":"vocab","q":"zusammen","ans":"together","options":[],"grp":"Adverb"},{"type":"vocab","q":"zwischen","ans":"between","options":[],"grp":"Preposition"},{"type":"vocab","q":"der Arm","ans":"arm","options":[],"grp":"Noun"},{"type":"artikel","q":"Arm","ans":"der","eng":"arm","options":["der","die","das"],"grp":"Noun","full":"der Arm"},{"type":"vocab","q":"das Auge","ans":"eye","options":[],"grp":"Noun"},{"type":"artikel","q":"Auge","ans":"das","eng":"eye","options":["der","die","das"],"grp":"Noun","full":"das Auge"},{"type":"vocab","q":"bei","ans":"at/near/with","options":[],"grp":"Preposition"},{"type":"vocab","q":"das Bein","ans":"leg","options":[],"grp":"Noun"},{"type":"artikel","q":"Bein","ans":"das","eng":"leg","options":["der","die","das"],"grp":"Noun","full":"das Bein"},{"type":"vocab","q":"die Birne","ans":"pear","options":[],"grp":"Noun"},{"type":"artikel","q":"Birne","ans":"die","eng":"pear","options":["der","die","das"],"grp":"Noun","full":"die Birne"},{"type":"vocab","q":"das Fieber","ans":"fever","options":[],"grp":"Noun"},{"type":"artikel","q":"Fieber","ans":"das","eng":"fever","options":["der","die","das"],"grp":"Noun","full":"das Fieber"},{"type":"vocab","q":"geradeaus","ans":"straight ahead","options":[],"grp":"Adverb"},{"type":"vocab","q":"herzlich","ans":"warm/cordial","options":[],"grp":"Adjective"},{"type":"vocab","q":"klar","ans":"clear/of course","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Kopf","ans":"head","options":[],"grp":"Noun"},{"type":"artikel","q":"Kopf","ans":"der","eng":"head","options":["der","die","das"],"grp":"Noun","full":"der Kopf"},{"type":"vocab","q":"krank","ans":"sick/ill","options":[],"grp":"Adjective"},{"type":"vocab","q":"lieb-","ans":"dear","options":[],"grp":"Adjective"},{"type":"vocab","q":"müde","ans":"tired","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Mund","ans":"mouth","options":[],"grp":"Noun"},{"type":"artikel","q":"Mund","ans":"der","eng":"mouth","options":["der","die","das"],"grp":"Noun","full":"der Mund"},{"type":"vocab","q":"noch","ans":"still/yet","options":[],"grp":"Adverb"},{"type":"vocab","q":"tot","ans":"dead","options":[],"grp":"Adjective"},{"type":"vocab","q":"das Apartment","ans":"apartment","options":[],"grp":"Noun"},{"type":"artikel","q":"Apartment","ans":"das","eng":"apartment","options":["der","die","das"],"grp":"Noun","full":"das Apartment"},{"type":"vocab","q":"das Bad","ans":"bathroom","options":[],"grp":"Noun"},{"type":"artikel","q":"Bad","ans":"das","eng":"bathroom","options":["der","die","das"],"grp":"Noun","full":"das Bad"},{"type":"vocab","q":"das Bett","ans":"bed","options":[],"grp":"Noun"},{"type":"artikel","q":"Bett","ans":"das","eng":"bed","options":["der","die","das"],"grp":"Noun","full":"das Bett"},{"type":"vocab","q":"das Doppelzimmer","ans":"double room","options":[],"grp":"Noun"},{"type":"artikel","q":"Doppelzimmer","ans":"das","eng":"double room","options":["der","die","das"],"grp":"Noun","full":"das Doppelzimmer"},{"type":"vocab","q":"das Haus","ans":"house/home","options":[],"grp":"Noun"},{"type":"artikel","q":"Haus","ans":"das","eng":"house/home","options":["der","die","das"],"grp":"Noun","full":"das Haus"},{"type":"vocab","q":"die Hausaufgabe","ans":"homework","options":[],"grp":"Noun"},{"type":"artikel","q":"Hausaufgabe","ans":"die","eng":"homework","options":["der","die","das"],"grp":"Noun","full":"die Hausaufgabe"},{"type":"vocab","q":"die Küche","ans":"kitchen","options":[],"grp":"Noun"},{"type":"artikel","q":"Küche","ans":"die","eng":"kitchen","options":["der","die","das"],"grp":"Noun","full":"die Küche"},{"type":"vocab","q":"der Kühlschrank","ans":"refrigerator","options":[],"grp":"Noun"},{"type":"artikel","q":"Kühlschrank","ans":"der","eng":"refrigerator","options":["der","die","das"],"grp":"Noun","full":"der Kühlschrank"},{"type":"vocab","q":"die Möbel","ans":"furniture","options":[],"grp":"Noun"},{"type":"artikel","q":"Möbel","ans":"die","eng":"furniture","options":["der","die","das"],"grp":"Noun","full":"die Möbel"},{"type":"vocab","q":"der Raum","ans":"room/space","options":[],"grp":"Noun"},{"type":"artikel","q":"Raum","ans":"der","eng":"room/space","options":["der","die","das"],"grp":"Noun","full":"der Raum"},{"type":"vocab","q":"der Schrank","ans":"cupboard/wardrobe","options":[],"grp":"Noun"},{"type":"artikel","q":"Schrank","ans":"der","eng":"cupboard/wardrobe","options":["der","die","das"],"grp":"Noun","full":"der Schrank"},{"type":"vocab","q":"das Sofa","ans":"sofa","options":[],"grp":"Noun"},{"type":"artikel","q":"Sofa","ans":"das","eng":"sofa","options":["der","die","das"],"grp":"Noun","full":"das Sofa"},{"type":"vocab","q":"der Tisch","ans":"table","options":[],"grp":"Noun"},{"type":"artikel","q":"Tisch","ans":"der","eng":"table","options":["der","die","das"],"grp":"Noun","full":"der Tisch"},{"type":"vocab","q":"die Wohnung","ans":"apartment/flat","options":[],"grp":"Noun"},{"type":"artikel","q":"Wohnung","ans":"die","eng":"apartment/flat","options":["der","die","das"],"grp":"Noun","full":"die Wohnung"},{"type":"vocab","q":"das Zimmer","ans":"room","options":[],"grp":"Noun"},{"type":"artikel","q":"Zimmer","ans":"das","eng":"room","options":["der","die","das"],"grp":"Noun","full":"das Zimmer"},{"type":"vocab","q":"die Adresse","ans":"address","options":[],"grp":"Noun"},{"type":"artikel","q":"Adresse","ans":"die","eng":"address","options":["der","die","das"],"grp":"Noun","full":"die Adresse"},{"type":"vocab","q":"die Bank","ans":"bank / bench","options":[],"grp":"Noun"},{"type":"artikel","q":"Bank","ans":"die","eng":"bank / bench","options":["der","die","das"],"grp":"Noun","full":"die Bank"},{"type":"vocab","q":"das Dorf","ans":"village","options":[],"grp":"Noun"},{"type":"artikel","q":"Dorf","ans":"das","eng":"village","options":["der","die","das"],"grp":"Noun","full":"das Dorf"},{"type":"vocab","q":"der Flughafen","ans":"airport","options":[],"grp":"Noun"},{"type":"artikel","q":"Flughafen","ans":"der","eng":"airport","options":["der","die","das"],"grp":"Noun","full":"der Flughafen"},{"type":"vocab","q":"der Geburtsort","ans":"place of birth","options":[],"grp":"Noun"},{"type":"artikel","q":"Geburtsort","ans":"der","eng":"place of birth","options":["der","die","das"],"grp":"Noun","full":"der Geburtsort"},{"type":"vocab","q":"das Kino","ans":"cinema","options":[],"grp":"Noun"},{"type":"artikel","q":"Kino","ans":"das","eng":"cinema","options":["der","die","das"],"grp":"Noun","full":"das Kino"},{"type":"vocab","q":"das Konto","ans":"account (bank)","options":[],"grp":"Noun"},{"type":"artikel","q":"Konto","ans":"das","eng":"account (bank)","options":["der","die","das"],"grp":"Noun","full":"das Konto"},{"type":"vocab","q":"das Land","ans":"country/land","options":[],"grp":"Noun"},{"type":"artikel","q":"Land","ans":"das","eng":"country/land","options":["der","die","das"],"grp":"Noun","full":"das Land"},{"type":"vocab","q":"das Lokal","ans":"restaurant/pub","options":[],"grp":"Noun"},{"type":"artikel","q":"Lokal","ans":"das","eng":"restaurant/pub","options":["der","die","das"],"grp":"Noun","full":"das Lokal"},{"type":"vocab","q":"der Ort","ans":"place/town","options":[],"grp":"Noun"},{"type":"artikel","q":"Ort","ans":"der","eng":"place/town","options":["der","die","das"],"grp":"Noun","full":"der Ort"},{"type":"vocab","q":"der Platz","ans":"place/seat/square","options":[],"grp":"Noun"},{"type":"artikel","q":"Platz","ans":"der","eng":"place/seat/square","options":["der","die","das"],"grp":"Noun","full":"der Platz"},{"type":"vocab","q":"die Post","ans":"post office/mail","options":[],"grp":"Noun"},{"type":"artikel","q":"Post","ans":"die","eng":"post office/mail","options":["der","die","das"],"grp":"Noun","full":"die Post"},{"type":"vocab","q":"die Postleitzahl","ans":"zip code","options":[],"grp":"Noun"},{"type":"artikel","q":"Postleitzahl","ans":"die","eng":"zip code","options":["der","die","das"],"grp":"Noun","full":"die Postleitzahl"},{"type":"vocab","q":"das Restaurant","ans":"restaurant","options":[],"grp":"Noun"},{"type":"artikel","q":"Restaurant","ans":"das","eng":"restaurant","options":["der","die","das"],"grp":"Noun","full":"das Restaurant"},{"type":"vocab","q":"die Stadt","ans":"city/town","options":[],"grp":"Noun"},{"type":"artikel","q":"Stadt","ans":"die","eng":"city/town","options":["der","die","das"],"grp":"Noun","full":"die Stadt"},{"type":"vocab","q":"das Studium","ans":"studies (university)","options":[],"grp":"Noun"},{"type":"artikel","q":"Studium","ans":"das","eng":"studies (university)","options":["der","die","das"],"grp":"Noun","full":"das Studium"},{"type":"vocab","q":"der Norden","ans":"north","options":[],"grp":"Noun"},{"type":"artikel","q":"Norden","ans":"der","eng":"north","options":["der","die","das"],"grp":"Noun","full":"der Norden"},{"type":"vocab","q":"der Süden","ans":"south","options":[],"grp":"Noun"},{"type":"artikel","q":"Süden","ans":"der","eng":"south","options":["der","die","das"],"grp":"Noun","full":"der Süden"},{"type":"vocab","q":"der Westen","ans":"west","options":[],"grp":"Noun"},{"type":"artikel","q":"Westen","ans":"der","eng":"west","options":["der","die","das"],"grp":"Noun","full":"der Westen"},{"type":"vocab","q":"der Osten","ans":"east","options":[],"grp":"Noun"},{"type":"artikel","q":"Osten","ans":"der","eng":"east","options":["der","die","das"],"grp":"Noun","full":"der Osten"},{"type":"vocab","q":"die Arbeit","ans":"work/job","options":[],"grp":"Noun"},{"type":"artikel","q":"Arbeit","ans":"die","eng":"work/job","options":["der","die","das"],"grp":"Noun","full":"die Arbeit"},{"type":"vocab","q":"arbeitslos","ans":"unemployed","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Arbeitsplatz","ans":"workplace","options":[],"grp":"Noun"},{"type":"artikel","q":"Arbeitsplatz","ans":"der","eng":"workplace","options":["der","die","das"],"grp":"Noun","full":"der Arbeitsplatz"},{"type":"vocab","q":"der Arzt","ans":"doctor","options":[],"grp":"Noun"},{"type":"artikel","q":"Arzt","ans":"der","eng":"doctor","options":["der","die","das"],"grp":"Noun","full":"der Arzt"},{"type":"vocab","q":"der Beruf","ans":"profession/job","options":[],"grp":"Noun"},{"type":"artikel","q":"Beruf","ans":"der","eng":"profession/job","options":["der","die","das"],"grp":"Noun","full":"der Beruf"},{"type":"vocab","q":"der Chef","ans":"boss","options":[],"grp":"Noun"},{"type":"artikel","q":"Chef","ans":"der","eng":"boss","options":["der","die","das"],"grp":"Noun","full":"der Chef"},{"type":"vocab","q":"der Doktor","ans":"doctor","options":[],"grp":"Noun"},{"type":"artikel","q":"Doktor","ans":"der","eng":"doctor","options":["der","die","das"],"grp":"Noun","full":"der Doktor"},{"type":"vocab","q":"der Fahrer","ans":"driver","options":[],"grp":"Noun"},{"type":"artikel","q":"Fahrer","ans":"der","eng":"driver","options":["der","die","das"],"grp":"Noun","full":"der Fahrer"},{"type":"vocab","q":"die Firma","ans":"company/firm","options":[],"grp":"Noun"},{"type":"artikel","q":"Firma","ans":"die","eng":"company/firm","options":["der","die","das"],"grp":"Noun","full":"die Firma"},{"type":"vocab","q":"der Job","ans":"job","options":[],"grp":"Noun"},{"type":"artikel","q":"Job","ans":"der","eng":"job","options":["der","die","das"],"grp":"Noun","full":"der Job"},{"type":"vocab","q":"der Kollege","ans":"colleague","options":[],"grp":"Noun"},{"type":"artikel","q":"Kollege","ans":"der","eng":"colleague","options":["der","die","das"],"grp":"Noun","full":"der Kollege"},{"type":"vocab","q":"der Lehrer","ans":"teacher","options":[],"grp":"Noun"},{"type":"artikel","q":"Lehrer","ans":"der","eng":"teacher","options":["der","die","das"],"grp":"Noun","full":"der Lehrer"},{"type":"vocab","q":"die Polizei","ans":"police","options":[],"grp":"Noun"},{"type":"artikel","q":"Polizei","ans":"die","eng":"police","options":["der","die","das"],"grp":"Noun","full":"die Polizei"},{"type":"vocab","q":"die Praxis","ans":"practice/doctor's office","options":[],"grp":"Noun"},{"type":"artikel","q":"Praxis","ans":"die","eng":"practice/doctor's office","options":["der","die","das"],"grp":"Noun","full":"die Praxis"},{"type":"vocab","q":"der Schüler","ans":"student/pupil","options":[],"grp":"Noun"},{"type":"artikel","q":"Schüler","ans":"der","eng":"student/pupil","options":["der","die","das"],"grp":"Noun","full":"der Schüler"},{"type":"vocab","q":"die Stelle","ans":"position/job","options":[],"grp":"Noun"},{"type":"artikel","q":"Stelle","ans":"die","eng":"position/job","options":["der","die","das"],"grp":"Noun","full":"die Stelle"},{"type":"vocab","q":"der Student","ans":"student (university)","options":[],"grp":"Noun"},{"type":"artikel","q":"Student","ans":"der","eng":"student (university)","options":["der","die","das"],"grp":"Noun","full":"der Student"},{"type":"vocab","q":"der Anrufbeantworter","ans":"answering machine","options":[],"grp":"Noun"},{"type":"artikel","q":"Anrufbeantworter","ans":"der","eng":"answering machine","options":["der","die","das"],"grp":"Noun","full":"der Anrufbeantworter"},{"type":"vocab","q":"antworten","ans":"to answer","options":[],"grp":"Verb"},{"type":"vocab","q":"die Antwort","ans":"answer","options":[],"grp":"Noun"},{"type":"artikel","q":"Antwort","ans":"die","eng":"answer","options":["der","die","das"],"grp":"Noun","full":"die Antwort"},{"type":"vocab","q":"die Aufgabe","ans":"task/exercise","options":[],"grp":"Noun"},{"type":"artikel","q":"Aufgabe","ans":"die","eng":"task/exercise","options":["der","die","das"],"grp":"Noun","full":"die Aufgabe"},{"type":"vocab","q":"das Beispiel","ans":"example","options":[],"grp":"Noun"},{"type":"artikel","q":"Beispiel","ans":"das","eng":"example","options":["der","die","das"],"grp":"Noun","full":"das Beispiel"},{"type":"vocab","q":"der Bleistift","ans":"pencil","options":[],"grp":"Noun"},{"type":"artikel","q":"Bleistift","ans":"der","eng":"pencil","options":["der","die","das"],"grp":"Noun","full":"der Bleistift"},{"type":"vocab","q":"das Buch","ans":"book","options":[],"grp":"Noun"},{"type":"artikel","q":"Buch","ans":"das","eng":"book","options":["der","die","das"],"grp":"Noun","full":"das Buch"},{"type":"vocab","q":"der Buchstabe","ans":"letter (alphabet)","options":[],"grp":"Noun"},{"type":"artikel","q":"Buchstabe","ans":"der","eng":"letter (alphabet)","options":["der","die","das"],"grp":"Noun","full":"der Buchstabe"},{"type":"vocab","q":"die Frage","ans":"question","options":[],"grp":"Noun"},{"type":"artikel","q":"Frage","ans":"die","eng":"question","options":["der","die","das"],"grp":"Noun","full":"die Frage"},{"type":"vocab","q":"die Prüfung","ans":"exam/test","options":[],"grp":"Noun"},{"type":"artikel","q":"Prüfung","ans":"die","eng":"exam/test","options":["der","die","das"],"grp":"Noun","full":"die Prüfung"},{"type":"vocab","q":"die Schule","ans":"school","options":[],"grp":"Noun"},{"type":"artikel","q":"Schule","ans":"die","eng":"school","options":["der","die","das"],"grp":"Noun","full":"die Schule"},{"type":"vocab","q":"die Sprache","ans":"language","options":[],"grp":"Noun"},{"type":"artikel","q":"Sprache","ans":"die","eng":"language","options":["der","die","das"],"grp":"Noun","full":"die Sprache"},{"type":"vocab","q":"das Wort","ans":"word","options":[],"grp":"Noun"},{"type":"artikel","q":"Wort","ans":"das","eng":"word","options":["der","die","das"],"grp":"Noun","full":"das Wort"},{"type":"vocab","q":"der Frühling/das Frühjahr","ans":"spring","options":[],"grp":"Noun"},{"type":"vocab","q":"der Sommer","ans":"summer","options":[],"grp":"Noun"},{"type":"artikel","q":"Sommer","ans":"der","eng":"summer","options":["der","die","das"],"grp":"Noun","full":"der Sommer"},{"type":"vocab","q":"der Herbst","ans":"autumn","options":[],"grp":"Noun"},{"type":"artikel","q":"Herbst","ans":"der","eng":"autumn","options":["der","die","das"],"grp":"Noun","full":"der Herbst"},{"type":"vocab","q":"der Winter","ans":"winter","options":[],"grp":"Noun"},{"type":"artikel","q":"Winter","ans":"der","eng":"winter","options":["der","die","das"],"grp":"Noun","full":"der Winter"},{"type":"vocab","q":"bar","ans":"cash","options":[],"grp":"Adjective"},{"type":"vocab","q":"bezahlen","ans":"to pay","options":[],"grp":"Verb"},{"type":"vocab","q":"billig","ans":"cheap","options":[],"grp":"Adjective"},{"type":"vocab","q":"das Geld","ans":"money","options":[],"grp":"Noun"},{"type":"artikel","q":"Geld","ans":"das","eng":"money","options":["der","die","das"],"grp":"Noun","full":"das Geld"},{"type":"vocab","q":"das Geschäft","ans":"shop/business","options":[],"grp":"Noun"},{"type":"artikel","q":"Geschäft","ans":"das","eng":"shop/business","options":["der","die","das"],"grp":"Noun","full":"das Geschäft"},{"type":"vocab","q":"günstig","ans":"affordable/cheap","options":[],"grp":"Adjective"},{"type":"vocab","q":"die Kasse","ans":"cash register/checkout","options":[],"grp":"Noun"},{"type":"artikel","q":"Kasse","ans":"die","eng":"cash register/checkout","options":["der","die","das"],"grp":"Noun","full":"die Kasse"},{"type":"vocab","q":"kosten","ans":"to cost","options":[],"grp":"Verb"},{"type":"vocab","q":"der Laden","ans":"shop/store","options":[],"grp":"Noun"},{"type":"artikel","q":"Laden","ans":"der","eng":"shop/store","options":["der","die","das"],"grp":"Noun","full":"der Laden"},{"type":"vocab","q":"die Rechnung","ans":"bill/invoice","options":[],"grp":"Noun"},{"type":"artikel","q":"Rechnung","ans":"die","eng":"bill/invoice","options":["der","die","das"],"grp":"Noun","full":"die Rechnung"},{"type":"vocab","q":"teuer","ans":"expensive","options":[],"grp":"Adjective"},{"type":"vocab","q":"wie viel","ans":"how much/many","options":[],"grp":"Pronoun"},{"type":"vocab","q":"das Datum","ans":"date","options":[],"grp":"Noun"},{"type":"artikel","q":"Datum","ans":"das","eng":"date","options":["der","die","das"],"grp":"Noun","full":"das Datum"},{"type":"vocab","q":"die E-Mail","ans":"e-mail","options":[],"grp":"Noun"},{"type":"artikel","q":"E-Mail","ans":"die","eng":"e-mail","options":["der","die","das"],"grp":"Noun","full":"die E-Mail"},{"type":"vocab","q":"Feier-","ans":"celebration/holiday","options":[],"grp":"Adjective"},{"type":"vocab","q":"die Freizeit","ans":"free time/leisure","options":[],"grp":"Noun"},{"type":"artikel","q":"Freizeit","ans":"die","eng":"free time/leisure","options":["der","die","das"],"grp":"Noun","full":"die Freizeit"},{"type":"vocab","q":"früher","ans":"earlier/formerly","options":[],"grp":"Adverb"},{"type":"vocab","q":"das Geburtsjahr","ans":"year of birth","options":[],"grp":"Noun"},{"type":"artikel","q":"Geburtsjahr","ans":"das","eng":"year of birth","options":["der","die","das"],"grp":"Noun","full":"das Geburtsjahr"},{"type":"vocab","q":"der Geburtstag","ans":"birthday","options":[],"grp":"Noun"},{"type":"artikel","q":"Geburtstag","ans":"der","eng":"birthday","options":["der","die","das"],"grp":"Noun","full":"der Geburtstag"},{"type":"vocab","q":"gestern","ans":"yesterday","options":[],"grp":"Adverb"},{"type":"vocab","q":"heute","ans":"today","options":[],"grp":"Adverb"},{"type":"vocab","q":"die Hochzeit","ans":"wedding","options":[],"grp":"Noun"},{"type":"artikel","q":"Hochzeit","ans":"die","eng":"wedding","options":["der","die","das"],"grp":"Noun","full":"die Hochzeit"},{"type":"vocab","q":"jetzt","ans":"now","options":[],"grp":"Adverb"},{"type":"vocab","q":"lange","ans":"for a long time","options":[],"grp":"Adverb"},{"type":"vocab","q":"morgen","ans":"tomorrow","options":[],"grp":"Adverb"},{"type":"vocab","q":"pünktlich","ans":"punctual/on time","options":[],"grp":"Adjective"},{"type":"vocab","q":"spät","ans":"late","options":[],"grp":"Adjective"},{"type":"vocab","q":"später","ans":"later","options":[],"grp":"Adverb"},{"type":"vocab","q":"die Stunde","ans":"hour","options":[],"grp":"Noun"},{"type":"artikel","q":"Stunde","ans":"die","eng":"hour","options":["der","die","das"],"grp":"Noun","full":"die Stunde"},{"type":"vocab","q":"die Uhr","ans":"clock/o'clock","options":[],"grp":"Noun"},{"type":"artikel","q":"Uhr","ans":"die","eng":"clock/o'clock","options":["der","die","das"],"grp":"Noun","full":"die Uhr"},{"type":"vocab","q":"um","ans":"at (time)/around","options":[],"grp":"Preposition"},{"type":"vocab","q":"wann","ans":"when","options":[],"grp":"Adverb"},{"type":"vocab","q":"die Zeit","ans":"time","options":[],"grp":"Noun"},{"type":"artikel","q":"Zeit","ans":"die","eng":"time","options":["der","die","das"],"grp":"Noun","full":"die Zeit"},{"type":"vocab","q":"zurzeit","ans":"currently","options":[],"grp":"Adverb"},{"type":"vocab","q":"die Zeitung","ans":"newspaper","options":[],"grp":"Noun"},{"type":"artikel","q":"Zeitung","ans":"die","eng":"newspaper","options":["der","die","das"],"grp":"Noun","full":"die Zeitung"},{"type":"vocab","q":"die Sekunde","ans":"second","options":[],"grp":"Noun"},{"type":"artikel","q":"Sekunde","ans":"die","eng":"second","options":["der","die","das"],"grp":"Noun","full":"die Sekunde"},{"type":"vocab","q":"die Minute","ans":"minute","options":[],"grp":"Noun"},{"type":"artikel","q":"Minute","ans":"die","eng":"minute","options":["der","die","das"],"grp":"Noun","full":"die Minute"},{"type":"vocab","q":"die Stunde","ans":"hour","options":[],"grp":"Noun"},{"type":"artikel","q":"Stunde","ans":"die","eng":"hour","options":["der","die","das"],"grp":"Noun","full":"die Stunde"},{"type":"vocab","q":"der Tag","ans":"day","options":[],"grp":"Noun"},{"type":"artikel","q":"Tag","ans":"der","eng":"day","options":["der","die","das"],"grp":"Noun","full":"der Tag"},{"type":"vocab","q":"die Woche","ans":"week","options":[],"grp":"Noun"},{"type":"artikel","q":"Woche","ans":"die","eng":"week","options":["der","die","das"],"grp":"Noun","full":"die Woche"},{"type":"vocab","q":"das Jahr","ans":"year","options":[],"grp":"Noun"},{"type":"artikel","q":"Jahr","ans":"das","eng":"year","options":["der","die","das"],"grp":"Noun","full":"das Jahr"},{"type":"vocab","q":"der Morgen","ans":"morning","options":[],"grp":"Noun"},{"type":"artikel","q":"Morgen","ans":"der","eng":"morning","options":["der","die","das"],"grp":"Noun","full":"der Morgen"},{"type":"vocab","q":"der Vormittag","ans":"late morning","options":[],"grp":"Noun"},{"type":"artikel","q":"Vormittag","ans":"der","eng":"late morning","options":["der","die","das"],"grp":"Noun","full":"der Vormittag"},{"type":"vocab","q":"der Mittag","ans":"noon","options":[],"grp":"Noun"},{"type":"artikel","q":"Mittag","ans":"der","eng":"noon","options":["der","die","das"],"grp":"Noun","full":"der Mittag"},{"type":"vocab","q":"der Nachmittag","ans":"afternoon","options":[],"grp":"Noun"},{"type":"artikel","q":"Nachmittag","ans":"der","eng":"afternoon","options":["der","die","das"],"grp":"Noun","full":"der Nachmittag"},{"type":"vocab","q":"der Abend","ans":"evening","options":[],"grp":"Noun"},{"type":"artikel","q":"Abend","ans":"der","eng":"evening","options":["der","die","das"],"grp":"Noun","full":"der Abend"},{"type":"vocab","q":"die Nacht","ans":"night","options":[],"grp":"Noun"},{"type":"artikel","q":"Nacht","ans":"die","eng":"night","options":["der","die","das"],"grp":"Noun","full":"die Nacht"},{"type":"vocab","q":"die Abfahrt","ans":"departure","options":[],"grp":"Noun"},{"type":"artikel","q":"Abfahrt","ans":"die","eng":"departure","options":["der","die","das"],"grp":"Noun","full":"die Abfahrt"},{"type":"vocab","q":"die Ankunft","ans":"arrival","options":[],"grp":"Noun"},{"type":"artikel","q":"Ankunft","ans":"die","eng":"arrival","options":["der","die","das"],"grp":"Noun","full":"die Ankunft"},{"type":"vocab","q":"der Ausflug","ans":"excursion/trip","options":[],"grp":"Noun"},{"type":"artikel","q":"Ausflug","ans":"der","eng":"excursion/trip","options":["der","die","das"],"grp":"Noun","full":"der Ausflug"},{"type":"vocab","q":"das Ausland","ans":"abroad","options":[],"grp":"Noun"},{"type":"artikel","q":"Ausland","ans":"das","eng":"abroad","options":["der","die","das"],"grp":"Noun","full":"das Ausland"},{"type":"vocab","q":"der Ausweis","ans":"ID card","options":[],"grp":"Noun"},{"type":"artikel","q":"Ausweis","ans":"der","eng":"ID card","options":["der","die","das"],"grp":"Noun","full":"der Ausweis"},{"type":"vocab","q":"das Auto","ans":"car","options":[],"grp":"Noun"},{"type":"artikel","q":"Auto","ans":"das","eng":"car","options":["der","die","das"],"grp":"Noun","full":"das Auto"},{"type":"vocab","q":"die Autobahn","ans":"highway/motorway","options":[],"grp":"Noun"},{"type":"artikel","q":"Autobahn","ans":"die","eng":"highway/motorway","options":["der","die","das"],"grp":"Noun","full":"die Autobahn"},{"type":"vocab","q":"die Bahn","ans":"train/railway","options":[],"grp":"Noun"},{"type":"artikel","q":"Bahn","ans":"die","eng":"train/railway","options":["der","die","das"],"grp":"Noun","full":"die Bahn"},{"type":"vocab","q":"der Bahnhof","ans":"train station","options":[],"grp":"Noun"},{"type":"artikel","q":"Bahnhof","ans":"der","eng":"train station","options":["der","die","das"],"grp":"Noun","full":"der Bahnhof"},{"type":"vocab","q":"besetzt","ans":"occupied/busy","options":[],"grp":"Adjective"},{"type":"vocab","q":"der Bus","ans":"bus","options":[],"grp":"Noun"},{"type":"artikel","q":"Bus","ans":"der","eng":"bus","options":["der","die","das"],"grp":"Noun","full":"der Bus"},{"type":"vocab","q":"die Fahrkarte","ans":"ticket (travel)","options":[],"grp":"Noun"},{"type":"artikel","q":"Fahrkarte","ans":"die","eng":"ticket (travel)","options":["der","die","das"],"grp":"Noun","full":"die Fahrkarte"},{"type":"vocab","q":"das Fahrrad","ans":"bicycle","options":[],"grp":"Noun"},{"type":"artikel","q":"Fahrrad","ans":"das","eng":"bicycle","options":["der","die","das"],"grp":"Noun","full":"das Fahrrad"},{"type":"vocab","q":"der Abflug","ans":"departure (flight)","options":[],"grp":"Noun"},{"type":"artikel","q":"Abflug","ans":"der","eng":"departure (flight)","options":["der","die","das"],"grp":"Noun","full":"der Abflug"},{"type":"vocab","q":"das Flugzeug","ans":"airplane","options":[],"grp":"Noun"},{"type":"artikel","q":"Flugzeug","ans":"das","eng":"airplane","options":["der","die","das"],"grp":"Noun","full":"das Flugzeug"},{"type":"vocab","q":"die Haltestelle","ans":"stop (bus/tram)","options":[],"grp":"Noun"},{"type":"artikel","q":"Haltestelle","ans":"die","eng":"stop (bus/tram)","options":["der","die","das"],"grp":"Noun","full":"die Haltestelle"},{"type":"vocab","q":"das Hotel","ans":"hotel","options":[],"grp":"Noun"},{"type":"artikel","q":"Hotel","ans":"das","eng":"hotel","options":["der","die","das"],"grp":"Noun","full":"das Hotel"},{"type":"vocab","q":"die Karte","ans":"card/map/menu/ticket","options":[],"grp":"Noun"},{"type":"artikel","q":"Karte","ans":"die","eng":"card/map/menu/ticket","options":["der","die","das"],"grp":"Noun","full":"die Karte"},{"type":"vocab","q":"die (Kredit-)Karte","ans":"credit card","options":[],"grp":"Noun"},{"type":"artikel","q":"(Kredit-)Karte","ans":"die","eng":"credit card","options":["der","die","das"],"grp":"Noun","full":"die (Kredit-)Karte"},{"type":"vocab","q":"der Koffer","ans":"suitcase","options":[],"grp":"Noun"},{"type":"artikel","q":"Koffer","ans":"der","eng":"suitcase","options":["der","die","das"],"grp":"Noun","full":"der Koffer"},{"type":"vocab","q":"reisen","ans":"to travel","options":[],"grp":"Verb"},{"type":"vocab","q":"das Reisebüro","ans":"travel agency","options":[],"grp":"Noun"},{"type":"artikel","q":"Reisebüro","ans":"das","eng":"travel agency","options":["der","die","das"],"grp":"Noun","full":"das Reisebüro"},{"type":"vocab","q":"der Reiseführer","ans":"travel guide","options":[],"grp":"Noun"},{"type":"artikel","q":"Reiseführer","ans":"der","eng":"travel guide","options":["der","die","das"],"grp":"Noun","full":"der Reiseführer"},{"type":"vocab","q":"die Rezeption","ans":"reception (hotel)","options":[],"grp":"Noun"},{"type":"artikel","q":"Rezeption","ans":"die","eng":"reception (hotel)","options":["der","die","das"],"grp":"Noun","full":"die Rezeption"},{"type":"vocab","q":"die S-Bahn","ans":"suburban train","options":[],"grp":"Noun"},{"type":"artikel","q":"S-Bahn","ans":"die","eng":"suburban train","options":["der","die","das"],"grp":"Noun","full":"die S-Bahn"},{"type":"vocab","q":"die Speisekarte","ans":"menu","options":[],"grp":"Noun"},{"type":"artikel","q":"Speisekarte","ans":"die","eng":"menu","options":["der","die","das"],"grp":"Noun","full":"die Speisekarte"},{"type":"vocab","q":"die Straße","ans":"street/road","options":[],"grp":"Noun"},{"type":"artikel","q":"Straße","ans":"die","eng":"street/road","options":["der","die","das"],"grp":"Noun","full":"die Straße"},{"type":"vocab","q":"die Straßenbahn","ans":"tram","options":[],"grp":"Noun"},{"type":"artikel","q":"Straßenbahn","ans":"die","eng":"tram","options":["der","die","das"],"grp":"Noun","full":"die Straßenbahn"},{"type":"vocab","q":"das Taxi","ans":"taxi","options":[],"grp":"Noun"},{"type":"artikel","q":"Taxi","ans":"das","eng":"taxi","options":["der","die","das"],"grp":"Noun","full":"das Taxi"},{"type":"vocab","q":"das Ticket","ans":"ticket","options":[],"grp":"Noun"},{"type":"artikel","q":"Ticket","ans":"das","eng":"ticket","options":["der","die","das"],"grp":"Noun","full":"das Ticket"},{"type":"vocab","q":"der Urlaub","ans":"vacation/holiday","options":[],"grp":"Noun"},{"type":"artikel","q":"Urlaub","ans":"der","eng":"vacation/holiday","options":["der","die","das"],"grp":"Noun","full":"der Urlaub"},{"type":"vocab","q":"der Zug","ans":"train","options":[],"grp":"Noun"},{"type":"artikel","q":"Zug","ans":"der","eng":"train","options":["der","die","das"],"grp":"Noun","full":"der Zug"},{"type":"vocab","q":"der Baum","ans":"tree","options":[],"grp":"Noun"},{"type":"artikel","q":"Baum","ans":"der","eng":"tree","options":["der","die","das"],"grp":"Noun","full":"der Baum"},{"type":"vocab","q":"die Blume","ans":"flower","options":[],"grp":"Noun"},{"type":"artikel","q":"Blume","ans":"die","eng":"flower","options":["der","die","das"],"grp":"Noun","full":"die Blume"},{"type":"vocab","q":"das Foto","ans":"photo","options":[],"grp":"Noun"},{"type":"artikel","q":"Foto","ans":"das","eng":"photo","options":["der","die","das"],"grp":"Noun","full":"das Foto"},{"type":"vocab","q":"das Meer","ans":"sea/ocean","options":[],"grp":"Noun"},{"type":"artikel","q":"Meer","ans":"das","eng":"sea/ocean","options":["der","die","das"],"grp":"Noun","full":"das Meer"},{"type":"vocab","q":"der Regen","ans":"rain","options":[],"grp":"Noun"},{"type":"artikel","q":"Regen","ans":"der","eng":"rain","options":["der","die","das"],"grp":"Noun","full":"der Regen"},{"type":"vocab","q":"der See","ans":"lake","options":[],"grp":"Noun"},{"type":"artikel","q":"See","ans":"der","eng":"lake","options":["der","die","das"],"grp":"Noun","full":"der See"},{"type":"vocab","q":"die Sonne","ans":"sun","options":[],"grp":"Noun"},{"type":"artikel","q":"Sonne","ans":"die","eng":"sun","options":["der","die","das"],"grp":"Noun","full":"die Sonne"},{"type":"vocab","q":"die Unterschrift","ans":"signature","options":[],"grp":"Noun"},{"type":"artikel","q":"Unterschrift","ans":"die","eng":"signature","options":["der","die","das"],"grp":"Noun","full":"die Unterschrift"},{"type":"vocab","q":"das Wetter","ans":"weather","options":[],"grp":"Noun"},{"type":"artikel","q":"Wetter","ans":"das","eng":"weather","options":["der","die","das"],"grp":"Noun","full":"das Wetter"},{"type":"vocab","q":"der Wind","ans":"wind","options":[],"grp":"Noun"},{"type":"artikel","q":"Wind","ans":"der","eng":"wind","options":["der","die","das"],"grp":"Noun","full":"der Wind"}];
@@ -1154,7 +1346,9 @@
 
         const levelData = { a1: a1Questions, a2: a2Questions, b1: b1Questions };
         const LANGUAGE_STORAGE_KEY = 'germanQuizUiLanguage';
-        const TRANSLATION_CACHE_KEY = 'germanQuizTranslationCache';
+        const STATIC_GLOSS_KEYS = window.GLOSS_KEYS || [];
+        const STATIC_GLOSS_TRANSLATIONS = window.GLOSS_TRANSLATIONS || {};
+        const STATIC_GLOSS_INDEX = Object.fromEntries(STATIC_GLOSS_KEYS.map((key, index) => [key, index]));
 
         const SUPPORTED_LANGUAGES = {
             en: { native: 'English', dir: 'ltr' },
@@ -1657,15 +1851,6 @@
 
         let currentLevel = 'a1';
         let currentLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY) || 'en';
-        let translationCache = JSON.parse(localStorage.getItem(TRANSLATION_CACHE_KEY) || '{}');
-        let translatorInstances = {};
-        let translatorPromises = {};
-        let translatorAvailability = {};
-        let translationJobs = {};
-        let translationRescanNeeded = {};
-        let glossTranslationPromises = {};
-        let glossCatalogCache = [];
-        let glossCatalogDirty = true;
         let selectedCount = 0;
         let questions = [];
         let currentIdx = 0;
@@ -1724,44 +1909,17 @@
             return (SUPPORTED_LANGUAGES[code] || SUPPORTED_LANGUAGES.en).native;
         }
 
-        function persistTranslationCache() {
-            localStorage.setItem(TRANSLATION_CACHE_KEY, JSON.stringify(translationCache));
-        }
-
-        function markGlossCatalogDirty() {
-            glossCatalogDirty = true;
-        }
-
-        function getGlossCatalog() {
-            if (!glossCatalogDirty && glossCatalogCache.length) return glossCatalogCache;
-
-            const catalog = new Set();
-            Object.keys(levelData).forEach(level => {
-                [...levelData[level], ...(userWordsByLevel[level] || [])].forEach(word => {
-                    const meaning = word.type === 'artikel' ? word.eng : word.ans;
-                    if (meaning) catalog.add(meaning);
-                });
-            });
-
-            glossCatalogCache = [...catalog];
-            glossCatalogDirty = false;
-            return glossCatalogCache;
-        }
-
-        function getLanguageCoverage(language) {
-            const total = getGlossCatalog().length;
-            if (language === 'en') return { done: total, total };
-
-            const cache = translationCache[language] || {};
-            let done = 0;
-            getGlossCatalog().forEach(gloss => {
-                if (cache[gloss]) done += 1;
-            });
-            return { done, total };
+        function getLocalizedGloss(text) {
+            if (!text || currentLanguage === 'en') return text;
+            const translations = STATIC_GLOSS_TRANSLATIONS[currentLanguage];
+            const index = STATIC_GLOSS_INDEX[text];
+            if (!translations || index === undefined) return text;
+            return translations[index] || text;
         }
 
         function setCurrentDirection() {
             const dir = (SUPPORTED_LANGUAGES[currentLanguage] || SUPPORTED_LANGUAGES.en).dir;
+            document.documentElement.lang = currentLanguage;
             document.documentElement.dir = dir;
             document.body.dataset.dir = dir;
         }
@@ -1954,194 +2112,7 @@
 
         function updateLanguageStatus() {
             const statusEl = document.getElementById('language-status');
-            const coverage = getLanguageCoverage(currentLanguage);
-            if (currentLanguage === 'en') {
-                statusEl.textContent = 'English';
-                return;
-            }
-
-            const status = translatorAvailability[currentLanguage];
-            const languageName = getLanguageName(currentLanguage);
-            if (coverage.done >= coverage.total && coverage.total > 0) {
-                statusEl.textContent = `${languageName} ready`;
-            } else if (status === 'available' || status === 'syncing' || status === 'downloadable' || status === 'downloading' || status === 'creating') {
-                statusEl.textContent = `${languageName} ${coverage.done}/${coverage.total}`;
-            } else if ('Translator' in self && window.isSecureContext) {
-                statusEl.textContent = `${languageName} ${coverage.done}/${coverage.total}`;
-            } else {
-                statusEl.textContent = `${languageName} fallback`;
-            }
-        }
-
-        function getCachedGloss(text, type = 'vocab') {
-            if (!text || currentLanguage === 'en' || type === 'artikel') return text;
-            return (translationCache[currentLanguage] || {})[text] || text;
-        }
-
-        async function getTranslator(language) {
-            if (language === 'en') return null;
-            if (!('Translator' in self) || !window.isSecureContext) {
-                translatorAvailability[language] = 'unavailable';
-                updateLanguageStatus();
-                return null;
-            }
-            if (translatorInstances[language]) return translatorInstances[language];
-            if (translatorPromises[language]) return translatorPromises[language];
-
-            translatorPromises[language] = (async () => {
-                try {
-                    const availability = await Translator.availability({
-                        sourceLanguage: 'en',
-                        targetLanguage: language
-                    });
-                    translatorAvailability[language] = availability;
-                    updateLanguageStatus();
-                    if (availability === 'unavailable') return null;
-
-                    translatorAvailability[language] = availability === 'available' ? 'available' : 'creating';
-                    updateLanguageStatus();
-
-                    const translator = await Translator.create({
-                        sourceLanguage: 'en',
-                        targetLanguage: language,
-                        monitor(monitor) {
-                            monitor.addEventListener('downloadprogress', () => {
-                                translatorAvailability[language] = 'downloading';
-                                updateLanguageStatus();
-                            });
-                        }
-                    });
-
-                    if (translator && 'ready' in translator && translator.ready && typeof translator.ready.then === 'function') {
-                        await translator.ready;
-                    }
-
-                    translatorInstances[language] = translator;
-                    translatorAvailability[language] = 'available';
-                    updateLanguageStatus();
-                    return translator;
-                } catch (error) {
-                    translatorAvailability[language] = 'unavailable';
-                    updateLanguageStatus();
-                    return null;
-                } finally {
-                    delete translatorPromises[language];
-                }
-            })();
-
-            return translatorPromises[language];
-        }
-
-        async function getGloss(text, type = 'vocab') {
-            if (!text || currentLanguage === 'en' || type === 'artikel') return text;
-            return translateGlossForLanguage(currentLanguage, text);
-        }
-
-        async function translateGlossForLanguage(language, text) {
-            if (!text || language === 'en') return text;
-            if (!translationCache[language]) translationCache[language] = {};
-            if (translationCache[language][text]) return translationCache[language][text];
-
-            const promiseKey = language + '::' + text;
-            if (glossTranslationPromises[promiseKey]) return glossTranslationPromises[promiseKey];
-
-            glossTranslationPromises[promiseKey] = (async () => {
-                const translator = await getTranslator(language);
-                if (!translator) return text;
-                try {
-                    const translated = await translator.translate(text);
-                    if (translated) {
-                        translationCache[language][text] = translated;
-                        persistTranslationCache();
-                        if (language === currentLanguage) updateLanguageStatus();
-                        return translated;
-                    }
-                } catch (error) {
-                    return text;
-                } finally {
-                    delete glossTranslationPromises[promiseKey];
-                }
-                return text;
-            })();
-
-            return glossTranslationPromises[promiseKey];
-        }
-
-        async function ensureLanguageTranslations(language) {
-            if (language === 'en') return;
-            if (translationJobs[language]) return translationJobs[language];
-
-            translationJobs[language] = (async () => {
-                const translator = await getTranslator(language);
-                if (!translator) return;
-
-                const missing = getGlossCatalog().filter(gloss => !(translationCache[language] || {})[gloss]);
-                if (!missing.length) {
-                    translatorAvailability[language] = 'available';
-                    if (language === currentLanguage) updateLanguageStatus();
-                    return;
-                }
-
-                translatorAvailability[language] = 'syncing';
-                if (language === currentLanguage) updateLanguageStatus();
-
-                for (let i = 0; i < missing.length; i += 1) {
-                    await translateGlossForLanguage(language, missing[i]);
-
-                    if (language === currentLanguage && ((i + 1) % 15 === 0 || i === missing.length - 1)) {
-                        updateLanguageStatus();
-                        refreshQuizLanguage();
-                        if (document.getElementById('pool-modal').classList.contains('open')) {
-                            renderPoolList(document.getElementById('pool-search').value);
-                        }
-                    }
-                }
-
-                translatorAvailability[language] = 'available';
-                if (language === currentLanguage) {
-                    updateLanguageStatus();
-                    refreshQuizLanguage();
-                    renderAddedList();
-                    if (document.getElementById('pool-modal').classList.contains('open')) {
-                        renderPoolList(document.getElementById('pool-search').value);
-                    }
-                }
-            })().finally(() => {
-                delete translationJobs[language];
-                if (translationRescanNeeded[language]) {
-                    delete translationRescanNeeded[language];
-                    ensureLanguageTranslations(language);
-                }
-            });
-
-            return translationJobs[language];
-        }
-
-        function requestLanguageTranslationSync(language) {
-            if (language === 'en') return;
-            if (translationJobs[language]) {
-                translationRescanNeeded[language] = true;
-                return translationJobs[language];
-            }
-            return ensureLanguageTranslations(language);
-        }
-
-        function hydrateQuestionTranslations(question, token, optionButtons) {
-            if (question.type === 'artikel') {
-                getGloss(question.eng || '', 'vocab').then(translated => {
-                    if (token !== renderToken) return;
-                    const sub = document.getElementById('art-sub');
-                    if (sub) sub.textContent = translated;
-                });
-                return;
-            }
-
-            optionButtons.forEach((button, answer) => {
-                getGloss(answer, 'vocab').then(translated => {
-                    if (token !== renderToken || !button.isConnected) return;
-                    button.textContent = translated;
-                });
-            });
+            statusEl.textContent = getLanguageName(currentLanguage);
         }
 
         function getQuestionTypeLabel(type) {
@@ -2191,7 +2162,7 @@
                 dynContent.innerHTML = `
                     <div class="audio-section" style="min-height: auto;">
                         <div class="text-question" id="art-text" data-revealed="false">___ ${escapeHtml(question.q)}</div>
-                        <div class="text-sub" id="art-sub">${escapeHtml(getCachedGloss(question.eng || '', 'vocab'))}</div>
+                        <div class="text-sub" id="art-sub">${escapeHtml(getLocalizedGloss(question.eng || ''))}</div>
                     </div>
                 `;
             } else {
@@ -2214,26 +2185,22 @@
             options.innerHTML = '';
             options.style.gridTemplateColumns = isArt ? '1fr 1fr 1fr' : '1fr 1fr';
 
-            const optionButtons = new Map();
             question.options.forEach(option => {
                 const button = document.createElement('button');
                 button.className = 'opt-btn';
                 button.dataset.answer = option;
-                button.textContent = getCachedGloss(option, question.type);
+                button.textContent = getLocalizedGloss(option);
                 button.onclick = () => checkAns(button, option, question.ans);
                 options.appendChild(button);
-                optionButtons.set(option, button);
             });
 
             setFooterMode('default');
-            hydrateQuestionTranslations(question, token, optionButtons);
         }
 
         function refreshQuizLanguage() {
             if (document.getElementById('quiz-area').style.display === 'none' || !questions.length || currentIdx >= questions.length) return;
 
             const question = questions[currentIdx];
-            const token = renderToken;
             renderQuestionHeader(question);
 
             if (question.type === 'artikel') {
@@ -2243,7 +2210,7 @@
                     artText.textContent = revealed ? question.full : `___ ${question.q}`;
                 }
                 const artSub = document.getElementById('art-sub');
-                if (artSub) artSub.textContent = getCachedGloss(question.eng || '', 'vocab');
+                if (artSub) artSub.textContent = getLocalizedGloss(question.eng || '');
             } else {
                 const slowBtn = document.getElementById('btn-slow');
                 const normBtn = document.getElementById('btn-norm');
@@ -2251,11 +2218,9 @@
                 if (normBtn) normBtn.textContent = t('normal');
             }
 
-            const optionButtons = new Map();
             document.querySelectorAll('#options .opt-btn').forEach(button => {
                 const answer = button.dataset.answer;
-                button.textContent = getCachedGloss(answer, question.type);
-                optionButtons.set(answer, button);
+                button.textContent = getLocalizedGloss(answer);
             });
 
             const actions = document.querySelectorAll('#footer-actions [data-action]');
@@ -2264,8 +2229,6 @@
                 if (button.dataset.action === 'skip') button.textContent = t('skip') + ' →';
                 if (button.dataset.action === 'next') button.textContent = t('nextQuestion') + ' →';
             });
-
-            hydrateQuestionTranslations(question, token, optionButtons);
         }
 
         function toggleSpeed(slow) {
@@ -2457,9 +2420,6 @@
             document.getElementById('quiz-area').style.display = 'block';
             document.getElementById('result-area').style.display = 'none';
             document.getElementById('stats-bar').style.display = 'block';
-
-            if (currentLanguage !== 'en') getTranslator(currentLanguage);
-            if (currentLanguage !== 'en') requestLanguageTranslationSync(currentLanguage);
             renderQuestion();
         }
 
@@ -2506,8 +2466,8 @@
             list.innerHTML = results.map(word => {
                 const title = word.type === 'artikel' ? (word.full || `${word.ans} ${word.q}`) : (word.q || '');
                 const translatedMeaning = word.type === 'artikel'
-                    ? `${getCachedGloss(word.eng || '', 'vocab')} · ${word.ans || ''}`
-                    : `${getCachedGloss(word.ans || '', 'vocab')}`;
+                    ? `${getLocalizedGloss(word.eng || '')} · ${word.ans || ''}`
+                    : `${getLocalizedGloss(word.ans || '')}`;
                 return `
                     <div class="pool-item">
                         <div class="pool-item-left">
@@ -2602,7 +2562,6 @@
             }
 
             localStorage.setItem('germanQuizUserWordsByLevel', JSON.stringify(userWordsByLevel));
-            markGlossCatalogDirty();
 
             if (isNoun) {
                 document.getElementById('add-noun').value = '';
@@ -2619,13 +2578,11 @@
             showToast(isNoun
                 ? t('addedToLevelNoun', { level: levelLabel, text: textLabel })
                 : t('addedToLevel', { level: levelLabel, text: textLabel }));
-            if (currentLanguage !== 'en') requestLanguageTranslationSync(currentLanguage);
         }
 
         function removeWord(index) {
             getUserWords().splice(index, 1);
             localStorage.setItem('germanQuizUserWordsByLevel', JSON.stringify(userWordsByLevel));
-            markGlossCatalogDirty();
             renderAddedList();
             updatePoolCount();
         }
@@ -2645,8 +2602,8 @@
             countEl.textContent = words.length;
 
             scroll.innerHTML = words.map((word, index) => {
-                const baseMeaning = getCachedGloss(word.ans, word.type);
-                const extraMeaning = word.eng ? ` (${getCachedGloss(word.eng, 'vocab')})` : '';
+                const baseMeaning = getLocalizedGloss(word.ans);
+                const extraMeaning = word.eng ? ` (${getLocalizedGloss(word.eng)})` : '';
                 return `
                     <div class="added-item">
                         <div class="word-info">
@@ -2654,7 +2611,7 @@
                             <span class="en">→ ${escapeHtml(baseMeaning + extraMeaning)}</span>
                             <span class="tag">${escapeHtml(getQuestionTypeLabel(word.type))}</span>
                         </div>
-                        <button class="remove-btn" onclick="removeWord(${index})" title="Remove">×</button>
+                        <button class="remove-btn" onclick="removeWord(${index})">×</button>
                     </div>
                 `;
             }).reverse().join('');
@@ -2675,7 +2632,7 @@
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        function applyLanguage(language, options = {}) {
+        function applyLanguage(language) {
             currentLanguage = SUPPORTED_LANGUAGES[language] ? language : 'en';
             localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
             setCurrentDirection();
@@ -2687,14 +2644,10 @@
                 renderPoolList(document.getElementById('pool-search').value);
             }
             refreshQuizLanguage();
-            if (options.primeTranslator && currentLanguage !== 'en') {
-                getTranslator(currentLanguage);
-                requestLanguageTranslationSync(currentLanguage);
-            }
         }
 
         function changeLanguage(language) {
-            applyLanguage(language, { primeTranslator: true });
+            applyLanguage(language);
         }
 
         document.addEventListener('keydown', event => {
@@ -2708,10 +2661,6 @@
         renderProgress();
         renderAddedList();
         updateLanguageStatus();
-        if (currentLanguage !== 'en') {
-            getTranslator(currentLanguage);
-            requestLanguageTranslationSync(currentLanguage);
-        }
     </script>
 
     <script>
